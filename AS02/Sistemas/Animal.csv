@@ -1,7 +1,7 @@
-nome,raca,idade,tipo
-"Thor","Buldogue",5,"cachorro"
-"Pingo","Poodle",1,"cachorro"
-"Amora","Shih-tzu",4,"cachorro"
-"Sun","Siam�s",3,"gato"
-"Morphel","Persa",2,"gato"
-"Bia","Sphynx",1,"gato"
+﻿id,nome,raca,idade,tipo
+1,"Thor","Buldogue",5,"cachorro"
+2,"Pingo","Poodle",1,"cachorro"
+3,"Amora","Shih-tzu",4,"cachorro"
+4,"Sun","Siamês",3,"gato"
+5,"Morphel","Persa",2,"gato"
+6,"Bia","Sphynx",1,"gato"
