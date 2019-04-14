@@ -1,0 +1,2 @@
+﻿Rufles;Vira-lata;5;cachorro
+Cabelinho;Vira-lata;10;cachorro
