@@ -1,6 +1,9 @@
 package Repository;
 
+import Entidades.Clinica;
 import Entidades.Medicamento;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -39,7 +42,8 @@ public class MedicamentoRepository {
             throw new RuntimeException(e);
         }
     }
-    public void adicionarMedicamentos() {
+
+    public void adicionarMedicamentosTxt() {
 
         try {
             FileReader reader = new FileReader("src/main/resources/novos-medicamentos.txt");
@@ -75,6 +79,38 @@ public class MedicamentoRepository {
             e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
+        }
+    }
+
+    public void adicionarMedicamentosJson() {
+
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            BufferedReader bufferedReader = new BufferedReader(
+                    new FileReader("src/main/resources/novos-medicamentos.json"));
+            Clinica clinica = gson.fromJson(bufferedReader, Clinica.class);
+            for (Medicamento medicamento : clinica.getMedicamentos()) {
+                String sql = "INSERT INTO medicamento (nome, preco, dosagem) VALUES (?, ?, ?)";
+
+                try {
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+
+                    stmt.setString(1, medicamento.getNome());
+                    stmt.setDouble(2, medicamento.getPreco());
+                    stmt.setString(3, medicamento.getDosagem());
+                    stmt.execute();
+                    stmt.close();
+
+                    System.out.println("Medicamento adicionado!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

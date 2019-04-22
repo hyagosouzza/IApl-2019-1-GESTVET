@@ -1,6 +1,9 @@
 package Repository;
 
 import Entidades.Animal;
+import Entidades.Clinica;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -42,7 +45,7 @@ public class AnimalRepository {
         }
     }
 
-    public void adicionarAnimais() {
+    public void adicionarAnimaisTxt() {
 
         try {
             FileReader reader = new FileReader("src/main/resources/novos-animais.txt");
@@ -79,6 +82,39 @@ public class AnimalRepository {
             e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
+        }
+    }
+
+    public void adicionarAnimaisJson() {
+
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            BufferedReader bufferedReader = new BufferedReader(
+                    new FileReader("src/main/resources/novos-animais.json"));
+            Clinica clinica = gson.fromJson(bufferedReader, Clinica.class);
+            for (Animal animal : clinica.getAnimais()) {
+                String sql = "INSERT INTO animal (nome, raca, idade, tipo) VALUES (?, ?, ?, ?)";
+
+                try {
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+
+                    stmt.setString(1, animal.getNome());
+                    stmt.setString(2, animal.getRaca());
+                    stmt.setInt(3, animal.getIdade());
+                    stmt.setString(4, animal.getTipo());
+                    stmt.execute();
+                    stmt.close();
+
+                    System.out.println("Animal adicionado!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }

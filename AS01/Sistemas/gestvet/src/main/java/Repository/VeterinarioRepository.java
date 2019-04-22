@@ -1,6 +1,10 @@
 package Repository;
 
+import Entidades.Clinica;
+import Entidades.Membro;
 import Entidades.Veterinario;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -41,7 +45,40 @@ public class VeterinarioRepository {
         }
     }
 
-    public void adicionarMembros() {
+    public void adicionarMembrosJson() {
+
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            BufferedReader bufferedReader = new BufferedReader(
+                    new FileReader("src/main/resources/novos-membros.json"));
+            Clinica clinica = gson.fromJson(bufferedReader, Clinica.class);
+            for (Veterinario veterinario : clinica.getVeterinarios()) {
+                String sql = "INSERT INTO membro (usuario, senha, nome, crmv) VALUES (?, ?, ?, ?)";
+
+                try {
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+
+                    stmt.setString(1, veterinario.getUser());
+                    stmt.setString(2, veterinario.getSenha());
+                    stmt.setString(3, veterinario.getNome());
+                    stmt.setInt(4, veterinario.getCrmv());
+                    stmt.execute();
+                    stmt.close();
+
+                    System.out.println("Membro adicionado!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void adicionarMembrosTxt() {
 
         try {
             FileReader reader = new FileReader("src/main/resources/novos-membros.txt");
