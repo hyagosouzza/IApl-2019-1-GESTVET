@@ -1,1 +1,10 @@
-{"veterinarios":[{"senha":"senhasegura","crmv":8451515,"nome":"Gabriel Barbosa","user":"gabarbosa"}]}
+{
+  "veterinarios": [
+    {
+      "senha": "senhasegura",
+      "crmv": 8451515,
+      "nome": "Gabriel Barbosa",
+      "user": "gabarbosa"
+    }
+  ]
+}

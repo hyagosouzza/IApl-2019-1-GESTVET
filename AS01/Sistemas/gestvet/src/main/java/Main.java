@@ -24,6 +24,7 @@ public class Main {
                     }
                     write.writeTxt("animais", animalRepository.listarAnimais());
                     write.writeJson("animais", animalRepository.listarAnimais());
+                    write.writeXml("animais", animalRepository.listarAnimais());
                     break;
                 case 2:
                     for (Object veterinario: veterinarioRepository.listarVeterinarios()) {
@@ -31,6 +32,7 @@ public class Main {
                     }
                     write.writeTxt("veterinarios", veterinarioRepository.listarVeterinarios());
                     write.writeJson("veterinarios", veterinarioRepository.listarVeterinarios());
+                    write.writeXml("veterinarios", veterinarioRepository.listarVeterinarios());
                     break;
                 case 3:
                     for (Object medicamento: medicamentoRepository.listarMedicamentos()) {
@@ -38,18 +40,22 @@ public class Main {
                     }
                     write.writeTxt("medicamentos", medicamentoRepository.listarMedicamentos());
                     write.writeJson("medicamentos", medicamentoRepository.listarMedicamentos());
+                    write.writeXml("medicamentos", medicamentoRepository.listarMedicamentos());
                     break;
                 case 4:
-                    //animalRepository.adicionarAnimaisTxt();
+                    animalRepository.adicionarAnimaisTxt();
                     animalRepository.adicionarAnimaisJson();
+                    animalRepository.adicionarAnimaisXML();
                     break;
                 case 5:
-                    //veterinarioRepository.adicionarMembrosTxt();
+                    veterinarioRepository.adicionarMembrosTxt();
                     veterinarioRepository.adicionarMembrosJson();
+                    veterinarioRepository.adicionarVeterinarioXML();
                     break;
                 case 6:
-                    //medicamentoRepository.adicionarMedicamentosTxt();
+                    medicamentoRepository.adicionarMedicamentosTxt();
                     medicamentoRepository.adicionarMedicamentosJson();
+                    medicamentoRepository.adicionarMedicamentosXML();
                     break;
                 default:
                     System.out.println("Opção inválida");
@@ -67,12 +73,12 @@ public class Main {
         System.out.println("\n            Sistema GESTVET");
         System.out.println("=======================================\n");
         System.out.println("Escolha uma das opções:");
-        System.out.println("1 - Gerar txt/json com dados de Animais");
-        System.out.println("2 - Gerar txt/json com dados de Membros");
-        System.out.println("3 - Gerar txt/json com dados de Medicamentos");
-        System.out.println("4 - Ler txt/json com dados de Animal");
-        System.out.println("5 - Ler txt/json com dados de Membro");
-        System.out.println("6 - Ler txt/json com dados de Medicamento\n");
+        System.out.println("1 - Gerar txt/json/xml com dados de Animais");
+        System.out.println("2 - Gerar txt/json/xml com dados de Membros");
+        System.out.println("3 - Gerar txt/json/xml com dados de Medicamentos");
+        System.out.println("4 - Ler txt/json/xml com dados de Animal");
+        System.out.println("5 - Ler txt/json/xml com dados de Membro");
+        System.out.println("6 - Ler txt/json/xml com dados de Medicamento\n");
 
         return leitor.nextInt();
     }

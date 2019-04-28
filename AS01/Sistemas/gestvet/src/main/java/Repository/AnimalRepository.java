@@ -4,16 +4,18 @@ import Entidades.Animal;
 import Entidades.Clinica;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class AnimalRepository {
@@ -114,6 +116,44 @@ public class AnimalRepository {
             }
 
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void adicionarAnimaisXML(){
+        try {
+            File arquivo = new File("src/main/resources/novos-animais.xml");
+            SAXBuilder sb = new SAXBuilder();
+            Document document = sb.build(arquivo);
+            Element list = document.getRootElement();
+            List animais = list.getChildren();
+            Iterator i = animais.iterator();
+            while (i.hasNext()){
+                Element animal = (Element) i.next();
+                String sql = "INSERT INTO animal (nome, raca, idade, tipo) VALUES (?, ?, ?, ?)";
+
+                try {
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+
+                    stmt.setString(1, animal.getChildText("nome"));
+                    stmt.setString(2, animal.getChildText("raca"));
+                    stmt.setInt(3, Integer.parseInt(animal.getChildText("idade")));
+                    stmt.setString(4, animal.getChildText("tipo"));
+                    stmt.execute();
+                    stmt.close();
+
+                    System.out.println("Animal adicionado!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
