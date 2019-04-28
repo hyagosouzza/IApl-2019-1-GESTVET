@@ -2,10 +2,10 @@ package Entidades;
 
 public class Animal {
 
-    private static final int LIMITENOME = 50;
-    private static final int LIMITERACA = 25;
-    private static final int LIMITEIDADE = 2;
-    private static final int LIMITETIPO = 30;
+    public static final int LIMITENOME = 50;
+    public static final int LIMITERACA = 25;
+    public static final int LIMITEIDADE = 2;
+    public static final int LIMITETIPO = 30;
 
     private int id;
     private String nome;
@@ -53,6 +53,8 @@ public class Animal {
         this.tipo = tipo;
     }
 
+    public Animal() { };
+
     public Animal(int id, String nome, String raca, int idade, String tipo) {
         this.id = id;
         this.nome = nome;
@@ -69,7 +71,7 @@ public class Animal {
                diferencaTamanho = this.LIMITENOME - atributo.length();
                contador = 0;
                while (contador < diferencaTamanho){
-                   resultado += "0";
+                   resultado += " ";
                }
 
                resultado = atributo + resultado;
@@ -80,7 +82,7 @@ public class Animal {
                 diferencaTamanho = this.LIMITERACA - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;
@@ -102,7 +104,7 @@ public class Animal {
                 diferencaTamanho = this.LIMITETIPO - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;

@@ -2,14 +2,16 @@ package Entidades;
 
 public class Medicamento {
 
-    private static final int LIMITENOME = 255;
-    private static final int LIMITEPRECO = 7;
-    private static final int LIMITEDOSAGEM = 255;
+    public static final int LIMITENOME = 50;
+    public static final int LIMITEPRECO = 7;
+    public static final int LIMITEDOSAGEM = 50;
 
     private int id;
     private String nome;
     private double preco;
     private String dosagem;
+
+    public Medicamento() {}
 
     public Medicamento(int id, String nome, double preco, String dosagem) {
         this.id = id;
@@ -58,7 +60,7 @@ public class Medicamento {
                 diferencaTamanho = this.LIMITENOME - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;
@@ -80,7 +82,7 @@ public class Medicamento {
                 diferencaTamanho = this.LIMITEDOSAGEM - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;

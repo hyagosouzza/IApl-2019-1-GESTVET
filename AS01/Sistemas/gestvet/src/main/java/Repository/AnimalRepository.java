@@ -56,6 +56,8 @@ public class AnimalRepository {
             String line = leitor.readLine();
 
             while (line != null) {
+                int index = 0;
+                Animal animal = this.getAnimalFromLine(line);
 
                 String array[] = line.split(";");
 
@@ -64,10 +66,10 @@ public class AnimalRepository {
                 try {
                     PreparedStatement stmt = connection.prepareStatement(sql);
 
-                    stmt.setString(1, array[0]);
-                    stmt.setString(2, array[1]);
-                    stmt.setInt(3, Integer.parseInt(array[2]));
-                    stmt.setString(4, array[3]);
+                    stmt.setString(1, animal.getNome());
+                    stmt.setString(2, animal.getRaca());
+                    stmt.setInt(3, animal.getIdade());
+                    stmt.setString(4, animal.getTipo());
                     stmt.execute();
                     stmt.close();
 
@@ -156,5 +158,25 @@ public class AnimalRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Animal getAnimalFromLine(String line) {
+        Animal animal = new Animal();
+        int index = 0;
+
+        String nome = line.substring(index, index + Animal.LIMITENOME);
+        index += Animal.LIMITENOME;
+        String raca = line.substring(index, index + Animal.LIMITERACA);
+        index += Animal.LIMITERACA;
+        int idade = Integer.parseInt(line.substring(index, index + Animal.LIMITEIDADE));
+        index += Animal.LIMITEIDADE;
+        String tipo = line.substring(index, index + Animal.LIMITETIPO);
+
+        animal.setNome(nome);
+        animal.setRaca(raca);
+        animal.setIdade(idade);
+        animal.setTipo(tipo);
+
+        return animal;
     }
 }

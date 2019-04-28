@@ -92,15 +92,17 @@ public class VeterinarioRepository {
 
                 String array[] = line.split(";");
 
+                Veterinario veterinario = this.getVeterinarioFromLine(line);
+
                 String sql = "INSERT INTO membro (usuario, senha, nome, crmv) VALUES (?, ?, ?, ?)";
 
                 try {
                     PreparedStatement stmt = connection.prepareStatement(sql);
 
-                    stmt.setString(1, array[0]);
-                    stmt.setString(2, array[1]);
-                    stmt.setString(3, array[2]);
-                    stmt.setInt(4, Integer.parseInt(array[3]));
+                    stmt.setString(1, veterinario.getUser());
+                    stmt.setString(2, veterinario.getSenha());
+                    stmt.setString(3, veterinario.getNome());
+                    stmt.setInt(4, veterinario.getCrmv());
                     stmt.execute();
                     stmt.close();
 
@@ -156,5 +158,25 @@ public class VeterinarioRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Veterinario getVeterinarioFromLine(String line) {
+        Veterinario veterinario = new Veterinario();
+        int index = 0;
+
+        String usuario = line.substring(index, index + Veterinario.LIMITEUSER);
+        index += Veterinario.LIMITEUSER;
+        String senha = line.substring(index, index + Veterinario.LIMITESENHA);
+        index += Veterinario.LIMITESENHA;
+        String nome = line.substring(index, index + Veterinario.LIMITENOME);
+        index += Veterinario.LIMITENOME;
+        int crmv = Integer.parseInt(line.substring(index, index + Veterinario.LIMITECRMV));
+
+        veterinario.setUser(usuario);
+        veterinario.setSenha(senha);
+        veterinario.setNome(nome);
+        veterinario.setCrmv(crmv);
+
+        return veterinario;
     }
 }

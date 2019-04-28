@@ -2,12 +2,14 @@ package Entidades;
 
 public class Veterinario extends Membro {
 
-    private static final int LIMITEUSER = 50;
-    private static final int LIMITESENHA = 20;
-    private static final int LIMITENOME = 50;
-    private static final int LIMITECRMV = 7;
+    public static final int LIMITEUSER = 50;
+    public static final int LIMITESENHA = 20;
+    public static final int LIMITENOME = 50;
+    public static final int LIMITECRMV = 7;
 
     private int crmv;
+
+    public Veterinario() {}
 
     public Veterinario(int id, String nome, String senha, String user, int crmv) {
         super(id, nome, senha, user);
@@ -30,7 +32,7 @@ public class Veterinario extends Membro {
                 diferencaTamanho = this.LIMITEUSER - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;
@@ -41,7 +43,7 @@ public class Veterinario extends Membro {
                 diferencaTamanho = this.LIMITESENHA - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;
@@ -52,7 +54,7 @@ public class Veterinario extends Membro {
                 diferencaTamanho = this.LIMITENOME - atributo.length();
                 contador = 0;
                 while (contador < diferencaTamanho){
-                    resultado += "0";
+                    resultado += " ";
                 }
 
                 resultado = atributo + resultado;

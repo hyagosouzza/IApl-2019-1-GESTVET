@@ -56,9 +56,9 @@ COMMENT ON TABLE public."MEMBRO"
 CREATE TABLE public."MEDICAMENTO"
 (
     id integer NOT NULL DEFAULT nextval('"MEDICAMENTO_id_seq"'::regclass),
-    nome character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
     preco double precision NOT NULL,
-    dosagem character varying(255) COLLATE pg_catalog."default",
+    dosagem character varying(50) COLLATE pg_catalog."default",
     CONSTRAINT "MEDICAMENTO_pkey" PRIMARY KEY (id)
 )
 WITH (
