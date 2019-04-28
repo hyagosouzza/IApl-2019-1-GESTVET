@@ -164,11 +164,11 @@ public class VeterinarioRepository {
         Veterinario veterinario = new Veterinario();
         int index = 0;
 
-        String usuario = line.substring(index, index + Veterinario.LIMITEUSER);
+        String usuario = line.substring(index, index + Veterinario.LIMITEUSER).trim();
         index += Veterinario.LIMITEUSER;
-        String senha = line.substring(index, index + Veterinario.LIMITESENHA);
+        String senha = line.substring(index, index + Veterinario.LIMITESENHA).trim();
         index += Veterinario.LIMITESENHA;
-        String nome = line.substring(index, index + Veterinario.LIMITENOME);
+        String nome = line.substring(index, index + Veterinario.LIMITENOME).trim();
         index += Veterinario.LIMITENOME;
         int crmv = Integer.parseInt(line.substring(index, index + Veterinario.LIMITECRMV));
 

@@ -160,11 +160,11 @@ public class MedicamentoRepository {
         Medicamento medicamento = new Medicamento();
         int index = 0;
 
-        String nome = line.substring(index, index + Medicamento.LIMITENOME);
+        String nome = line.substring(index, index + Medicamento.LIMITENOME).trim();
         index += Medicamento.LIMITENOME;
         double preco = Integer.parseInt(line.substring(index, index + Medicamento.LIMITEPRECO));
         index += Medicamento.LIMITEPRECO;
-        String dosagem = line.substring(index, index + Medicamento.LIMITEDOSAGEM);
+        String dosagem = line.substring(index, index + Medicamento.LIMITEDOSAGEM).trim();
 
         medicamento.setNome(nome);
         medicamento.setPreco(preco);

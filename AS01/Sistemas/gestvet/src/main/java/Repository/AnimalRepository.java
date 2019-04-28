@@ -164,13 +164,13 @@ public class AnimalRepository {
         Animal animal = new Animal();
         int index = 0;
 
-        String nome = line.substring(index, index + Animal.LIMITENOME);
+        String nome = line.substring(index, index + Animal.LIMITENOME).trim();
         index += Animal.LIMITENOME;
-        String raca = line.substring(index, index + Animal.LIMITERACA);
+        String raca = line.substring(index, index + Animal.LIMITERACA).trim();
         index += Animal.LIMITERACA;
         int idade = Integer.parseInt(line.substring(index, index + Animal.LIMITEIDADE));
         index += Animal.LIMITEIDADE;
-        String tipo = line.substring(index, index + Animal.LIMITETIPO);
+        String tipo = line.substring(index, index + Animal.LIMITETIPO).trim();
 
         animal.setNome(nome);
         animal.setRaca(raca);

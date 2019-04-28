@@ -1,3 +1,4 @@
+import Entidades.Animal;
 import File.Write;
 import Repository.AnimalRepository;
 import Repository.MedicamentoRepository;
