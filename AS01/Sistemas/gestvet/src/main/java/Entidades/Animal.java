@@ -2,6 +2,11 @@ package Entidades;
 
 public class Animal {
 
+    public static final int LIMITENOME = 50;
+    public static final int LIMITERACA = 25;
+    public static final int LIMITEIDADE = 2;
+    public static final int LIMITETIPO = 30;
+
     private int id;
     private String nome;
     private String raca;
@@ -48,6 +53,8 @@ public class Animal {
         this.tipo = tipo;
     }
 
+    public Animal() { };
+
     public Animal(int id, String nome, String raca, int idade, String tipo) {
         this.id = id;
         this.nome = nome;
@@ -56,8 +63,64 @@ public class Animal {
         this.tipo = tipo;
     }
 
+    private String formatarAtributo(String atributo, String nomeAtributo){
+        String resultado = "";
+        int diferencaTamanho, contador;
+        if (nomeAtributo.equals("nome")){
+           if (atributo.length() < this.LIMITENOME){
+               diferencaTamanho = this.LIMITENOME - atributo.length();
+               contador = 0;
+               while (contador < diferencaTamanho){
+                   resultado += " ";
+               }
+
+               resultado = atributo + resultado;
+               return resultado;
+           }
+        } else if (nomeAtributo.equals("raca")){
+            if (atributo.length() < this.LIMITERACA){
+                diferencaTamanho = this.LIMITERACA - atributo.length();
+                contador = 0;
+                while (contador < diferencaTamanho){
+                    resultado += " ";
+                }
+
+                resultado = atributo + resultado;
+                return resultado;
+            }
+        } else if (nomeAtributo.equals("idade")){
+            if (atributo.length() < this.LIMITEIDADE){
+                diferencaTamanho = this.LIMITEIDADE - atributo.length();
+                contador = 0;
+                while (contador < diferencaTamanho){
+                    resultado += "0";
+                }
+
+                resultado = resultado + atributo;
+                return resultado;
+            }
+        } else {
+            if (atributo.length() < this.LIMITETIPO){
+                diferencaTamanho = this.LIMITETIPO - atributo.length();
+                contador = 0;
+                while (contador < diferencaTamanho){
+                    resultado += " ";
+                }
+
+                resultado = atributo + resultado;
+                return resultado;
+            }
+        }
+
+        return resultado;
+    }
+
     @Override
     public String toString() {
-        return getNome()+";"+getRaca()+";"+getIdade()+";"+getTipo()+";"+getId();
+        String nomeFormatado = formatarAtributo(getNome(), "nome");
+        String racaFormatado = formatarAtributo(getRaca(), "raca");
+        String idadeFormatado = formatarAtributo(Integer.toString(getIdade()), "idade");
+        String tipoFormatado = formatarAtributo(getTipo(), "tipo");
+        return nomeFormatado+racaFormatado+idadeFormatado+tipoFormatado+getId();
     }
 }

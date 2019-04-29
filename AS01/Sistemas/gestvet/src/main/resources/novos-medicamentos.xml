@@ -1,0 +1,12 @@
+<list>
+    <Medicamento>
+        <nome>Drontal Plus para Cães</nome>
+        <preco>29.50</preco>
+        <dosagem>776.5mg</dosagem>
+    </Medicamento>
+    <Medicamento>
+        <nome>776,5</nome>
+        <preco>29.50</preco>
+        <dosagem>50mg</dosagem>
+    </Medicamento>
+</list>

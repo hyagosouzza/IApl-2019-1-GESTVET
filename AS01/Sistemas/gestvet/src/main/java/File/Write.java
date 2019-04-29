@@ -2,9 +2,9 @@ package File;
 
 import Entidades.Animal;
 import Entidades.Medicamento;
-import Entidades.Membro;
 import Entidades.Veterinario;
-import Repository.AnimalRepository;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,14 +12,15 @@ import org.json.JSONObject;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 public class Write {
 
     public void writeTxt(String nome, List<Object> objects) throws IOException {
 
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Public\\"+nome+".txt"));
-        for (Object obj: objects) {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Public\\" + nome + ".txt"));
+        for (Object obj : objects) {
             bufferedWriter.write(obj.toString());
             bufferedWriter.newLine();
         }
@@ -34,11 +35,11 @@ public class Write {
 
         FileWriter writeFile = null;
 
-        try{
-            writeFile = new FileWriter("C:\\Users\\Public\\"+nome+".json");
+        try {
+            writeFile = new FileWriter("C:\\Users\\Public\\" + nome + ".json");
 
-            if(nome.equals("animais")) {
-                for (Object obj: objects) {
+            if (nome.equals("animais")) {
+                for (Object obj : objects) {
                     jsonObject.put("nome", Animal.class.cast(obj).getNome());
                     jsonObject.put("idade", Animal.class.cast(obj).getIdade());
                     jsonObject.put("raca", Animal.class.cast(obj).getRaca());
@@ -48,8 +49,8 @@ public class Write {
                 }
 
                 jsonObject.put("animais", objectsJson);
-            } else if(nome.equals("medicamentos")) {
-                for (Object obj: objects) {
+            } else if (nome.equals("medicamentos")) {
+                for (Object obj : objects) {
                     jsonObject.put("nome", Medicamento.class.cast(obj).getNome());
                     jsonObject.put("preco", Medicamento.class.cast(obj).getPreco());
                     jsonObject.put("dosagem", Medicamento.class.cast(obj).getDosagem());
@@ -59,7 +60,7 @@ public class Write {
 
                 jsonObject.put("medicamentos", objectsJson);
             } else {
-                for (Object obj: objects) {
+                for (Object obj : objects) {
                     jsonObject.put("nome", Veterinario.class.cast(obj).getNome());
                     jsonObject.put("user", Veterinario.class.cast(obj).getUser());
                     jsonObject.put("senha", Veterinario.class.cast(obj).getSenha());
@@ -75,14 +76,34 @@ public class Write {
             writeFile.write(jsonObject.toString());
 
             writeFile.close();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         System.out.println(jsonObject);
+    }
+
+    public void writeXml(String nome, List<Object> objects) throws IOException {
+        XStream xStream = new XStream(new DomDriver());
+
+        FileWriter writeFile = null;
+        String xmlString;
+
+        xmlString = xStream.toXML(objects);
+
+        try {
+            PrintWriter write = null;
+            File arquivo = new File("src/main/resources/" + nome + ".xml");
+            write = new PrintWriter(arquivo);
+
+            write.write(xmlString);
+            write.flush();
+            write.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

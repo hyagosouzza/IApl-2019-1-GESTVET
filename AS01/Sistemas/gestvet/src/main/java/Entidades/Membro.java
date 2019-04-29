@@ -39,6 +39,8 @@ public class Membro {
         this.user = user;
     }
 
+    public Membro() {}
+
     public Membro(int id, String nome, String senha, String user) {
         this.id = id;
         this.nome = nome;

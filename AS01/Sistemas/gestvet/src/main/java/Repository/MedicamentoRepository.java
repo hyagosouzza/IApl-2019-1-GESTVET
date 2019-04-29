@@ -4,16 +4,19 @@ import Entidades.Clinica;
 import Entidades.Medicamento;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class MedicamentoRepository {
 
@@ -53,6 +56,8 @@ public class MedicamentoRepository {
 
             while (line != null) {
 
+                Medicamento medicamento = this.getMedicamentoFromLine(line);
+
                 String array[] = line.split(";");
 
                 String sql = "INSERT INTO medicamento (nome, preco, dosagem) VALUES (?, ?, ?)";
@@ -60,9 +65,9 @@ public class MedicamentoRepository {
                 try {
                     PreparedStatement stmt = connection.prepareStatement(sql);
 
-                    stmt.setString(1, array[0]);
-                    stmt.setDouble(2, Double.parseDouble(array[1]));
-                    stmt.setString(3, array[2]);
+                    stmt.setString(1, medicamento.getNome());
+                    stmt.setDouble(2, medicamento.getPreco());
+                    stmt.setString(3, medicamento.getDosagem());
                     stmt.execute();
                     stmt.close();
 
@@ -114,4 +119,57 @@ public class MedicamentoRepository {
         }
     }
 
+    public void adicionarMedicamentosXML(){
+        try {
+            File arquivo = new File("src/main/resources/novos-medicamentos.xml");
+            SAXBuilder sb = new SAXBuilder();
+            Document document = sb.build(arquivo);
+            Element list = document.getRootElement();
+            List medicamentos = list.getChildren();
+            Iterator i = medicamentos.iterator();
+            while (i.hasNext()){
+                Element medicamento = (Element) i.next();
+                String sql = "INSERT INTO medicamento (nome, preco, dosagem) VALUES (?, ?, ?)";
+
+                try {
+                    PreparedStatement stmt = connection.prepareStatement(sql);
+
+                    stmt.setString(1, medicamento.getChildText("nome"));
+                    stmt.setDouble(2, Double.parseDouble(medicamento.getChildText("preco")));
+                    stmt.setString(3, medicamento.getChildText("dosagem"));
+                    stmt.execute();
+                    stmt.close();
+
+                    System.out.println("Animal adicionado!");
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JDOMException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Medicamento getMedicamentoFromLine(String line) {
+        Medicamento medicamento = new Medicamento();
+        int index = 0;
+
+        String nome = line.substring(index, index + Medicamento.LIMITENOME).trim();
+        index += Medicamento.LIMITENOME;
+        double preco = Integer.parseInt(line.substring(index, index + Medicamento.LIMITEPRECO));
+        index += Medicamento.LIMITEPRECO;
+        String dosagem = line.substring(index, index + Medicamento.LIMITEDOSAGEM).trim();
+
+        medicamento.setNome(nome);
+        medicamento.setPreco(preco);
+        medicamento.setDosagem(dosagem);
+
+        return medicamento;
+    }
 }

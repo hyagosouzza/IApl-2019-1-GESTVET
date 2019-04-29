@@ -1,0 +1,14 @@
+<list>
+    <Animal>
+        <nome>Morpheus</nome>
+        <raca>Pintcher</raca>
+        <idade>6</idade>
+        <tipo>Cachorro</tipo>
+    </Animal>
+    <Animal>
+        <nome>Laica</nome>
+        <raca>Pastor Alemão</raca>
+        <idade>8</idade>
+        <tipo>Cachorro</tipo>
+    </Animal>
+</list>

@@ -1,2 +1,2 @@
-raquelzinha;ferreira;Raquel Ferreira;1518151
-meninadaletras;123456;Karine;8795451;
+raquelzinha                                       ferreira            Raquel Ferreira                                   1518151
+meninadaletras                                    123456              Karine                                            8795451
