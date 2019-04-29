@@ -61,6 +61,7 @@ public class Medicamento {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
@@ -72,6 +73,7 @@ public class Medicamento {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += "0";
+                    contador++;
                 }
 
                 resultado = resultado + atributo;
@@ -83,6 +85,7 @@ public class Medicamento {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;

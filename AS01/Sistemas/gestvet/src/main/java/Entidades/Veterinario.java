@@ -33,6 +33,7 @@ public class Veterinario extends Membro {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
@@ -44,6 +45,7 @@ public class Veterinario extends Membro {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
@@ -55,6 +57,7 @@ public class Veterinario extends Membro {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
@@ -66,6 +69,7 @@ public class Veterinario extends Membro {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += "0";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
@@ -83,6 +87,6 @@ public class Veterinario extends Membro {
         String nomeFormatado = formatarAtributo(getNome(), "nome");
         String crmvFormatado = formatarAtributo(Integer.toString(getCrmv()), "crmv");
 
-        return this.getUser()+";"+getSenha()+";"+getNome()+";"+getCrmv()+";"+getId();
+        return userFormatado+senhaFormatado+nomeFormatado+crmvFormatado;
     }
 }

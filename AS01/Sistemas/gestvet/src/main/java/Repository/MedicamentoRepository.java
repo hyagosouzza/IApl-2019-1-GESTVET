@@ -28,7 +28,7 @@ public class MedicamentoRepository {
 
     public ArrayList<Object> listarMedicamentos() {
         ArrayList<Object> medicamentos = new ArrayList<Object>();
-        String sql = "SELECT * FROM MEDICAMENTO";
+        String sql = "SELECT * FROM medicamento";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -140,7 +140,7 @@ public class MedicamentoRepository {
                     stmt.execute();
                     stmt.close();
 
-                    System.out.println("Animal adicionado!");
+                    System.out.println("Medicamento adicionado!");
 
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -162,7 +162,7 @@ public class MedicamentoRepository {
 
         String nome = line.substring(index, index + Medicamento.LIMITENOME).trim();
         index += Medicamento.LIMITENOME;
-        double preco = Integer.parseInt(line.substring(index, index + Medicamento.LIMITEPRECO));
+        double preco = Double.parseDouble(line.substring(index, index + Medicamento.LIMITEPRECO));
         index += Medicamento.LIMITEPRECO;
         String dosagem = line.substring(index, index + Medicamento.LIMITEDOSAGEM).trim();
 

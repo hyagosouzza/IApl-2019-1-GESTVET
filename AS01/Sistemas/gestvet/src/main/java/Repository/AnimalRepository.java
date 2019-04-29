@@ -28,7 +28,7 @@ public class AnimalRepository {
 
     public List<Object> listarAnimais() {
         ArrayList<Object> animais = new ArrayList<Object>();
-        String sql = "SELECT * FROM ANIMAL";
+        String sql = "SELECT * FROM animal";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -170,7 +170,7 @@ public class AnimalRepository {
         index += Animal.LIMITERACA;
         int idade = Integer.parseInt(line.substring(index, index + Animal.LIMITEIDADE));
         index += Animal.LIMITEIDADE;
-        String tipo = line.substring(index, index + Animal.LIMITETIPO).trim();
+        String tipo = line.substring(index, index + 8).trim();
 
         animal.setNome(nome);
         animal.setRaca(raca);

@@ -18,8 +18,8 @@ import java.util.List;
 public class Write {
 
     public void writeTxt(String nome, List<Object> objects) throws IOException {
-
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Public\\" + nome + ".txt"));
+
         for (Object obj : objects) {
             bufferedWriter.write(obj.toString());
             bufferedWriter.newLine();
@@ -76,13 +76,13 @@ public class Write {
             writeFile.write(jsonObject.toString());
 
             writeFile.close();
+            System.out.println("\nArquivo C:\\Users\\Public\\" + nome + ".json criado.");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        System.out.println(jsonObject);
     }
 
     public void writeXml(String nome, List<Object> objects) throws IOException {
@@ -95,12 +95,13 @@ public class Write {
 
         try {
             PrintWriter write = null;
-            File arquivo = new File("src/main/resources/" + nome + ".xml");
+            File arquivo = new File("C:\\Users\\Public\\" + nome + ".xml");
             write = new PrintWriter(arquivo);
 
             write.write(xmlString);
             write.flush();
             write.close();
+            System.out.println("\nArquivo C:\\Users\\Public\\" + nome + ".xml criado.");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

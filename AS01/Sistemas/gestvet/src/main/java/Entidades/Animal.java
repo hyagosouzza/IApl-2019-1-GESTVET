@@ -72,9 +72,11 @@ public class Animal {
                contador = 0;
                while (contador < diferencaTamanho){
                    resultado += " ";
+                   contador++;
                }
 
                resultado = atributo + resultado;
+               System.out.println(resultado);
                return resultado;
            }
         } else if (nomeAtributo.equals("raca")){
@@ -83,9 +85,11 @@ public class Animal {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
+                System.out.println(resultado);
                 return resultado;
             }
         } else if (nomeAtributo.equals("idade")){
@@ -94,9 +98,11 @@ public class Animal {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += "0";
+                    contador++;
                 }
 
                 resultado = resultado + atributo;
+                System.out.println(resultado);
                 return resultado;
             }
         } else {
@@ -105,13 +111,16 @@ public class Animal {
                 contador = 0;
                 while (contador < diferencaTamanho){
                     resultado += " ";
+                    contador++;
                 }
 
                 resultado = atributo + resultado;
+                System.out.println(resultado);
                 return resultado;
             }
         }
 
+        System.out.println(resultado);
         return resultado;
     }
 

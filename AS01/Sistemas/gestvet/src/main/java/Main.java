@@ -1,4 +1,3 @@
-import Entidades.Animal;
 import File.Write;
 import Repository.AnimalRepository;
 import Repository.MedicamentoRepository;
@@ -20,25 +19,16 @@ public class Main {
             Scanner leitor = new Scanner(System.in);
             switch (tela(leitor)) {
                 case 1:
-                    for (Object animal: animalRepository.listarAnimais()) {
-                        System.out.println(animal.toString());
-                    }
                     write.writeTxt("animais", animalRepository.listarAnimais());
                     write.writeJson("animais", animalRepository.listarAnimais());
                     write.writeXml("animais", animalRepository.listarAnimais());
                     break;
                 case 2:
-                    for (Object veterinario: veterinarioRepository.listarVeterinarios()) {
-                        System.out.println(veterinario.toString());
-                    }
                     write.writeTxt("veterinarios", veterinarioRepository.listarVeterinarios());
                     write.writeJson("veterinarios", veterinarioRepository.listarVeterinarios());
                     write.writeXml("veterinarios", veterinarioRepository.listarVeterinarios());
                     break;
                 case 3:
-                    for (Object medicamento: medicamentoRepository.listarMedicamentos()) {
-                        System.out.println(medicamento.toString());
-                    }
                     write.writeTxt("medicamentos", medicamentoRepository.listarMedicamentos());
                     write.writeJson("medicamentos", medicamentoRepository.listarMedicamentos());
                     write.writeXml("medicamentos", medicamentoRepository.listarMedicamentos());
