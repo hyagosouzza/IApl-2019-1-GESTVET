@@ -158,13 +158,13 @@ public class MedicamentoRepository {
 
     private Medicamento getMedicamentoFromLine(String line) {
         Medicamento medicamento = new Medicamento();
-        int index = 0;
+        int index = 1;
 
-        String nome = line.substring(index, index + Medicamento.LIMITENOME).trim();
+        String nome = line.substring(index, index + Medicamento.LIMITENOME - 1).trim();
         index += Medicamento.LIMITENOME;
-        double preco = Double.parseDouble(line.substring(index, index + Medicamento.LIMITEPRECO));
+        double preco = Double.parseDouble(line.substring(index, index + Medicamento.LIMITEPRECO - 1));
         index += Medicamento.LIMITEPRECO;
-        String dosagem = line.substring(index, index + Medicamento.LIMITEDOSAGEM).trim();
+        String dosagem = line.substring(index, line.length()).trim();
 
         medicamento.setNome(nome);
         medicamento.setPreco(preco);

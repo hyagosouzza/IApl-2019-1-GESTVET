@@ -162,15 +162,15 @@ public class AnimalRepository {
 
     private Animal getAnimalFromLine(String line) {
         Animal animal = new Animal();
-        int index = 0;
+        int index = 1;
 
-        String nome = line.substring(index, index + Animal.LIMITENOME).trim();
+        String nome = line.substring(index, index + Animal.LIMITENOME - 1).trim();
         index += Animal.LIMITENOME;
-        String raca = line.substring(index, index + Animal.LIMITERACA).trim();
+        String raca = line.substring(index, index + Animal.LIMITERACA - 1).trim();
         index += Animal.LIMITERACA;
-        int idade = Integer.parseInt(line.substring(index, index + Animal.LIMITEIDADE));
+        int idade = Integer.parseInt(line.substring(index, index + Animal.LIMITEIDADE - 1));
         index += Animal.LIMITEIDADE;
-        String tipo = line.substring(index, index + 8).trim();
+        String tipo = line.substring(index, line.length()).trim();
 
         animal.setNome(nome);
         animal.setRaca(raca);

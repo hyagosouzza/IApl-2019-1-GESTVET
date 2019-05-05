@@ -162,15 +162,15 @@ public class VeterinarioRepository {
 
     private Veterinario getVeterinarioFromLine(String line) {
         Veterinario veterinario = new Veterinario();
-        int index = 0;
+        int index = 1;
 
-        String usuario = line.substring(index, index + Veterinario.LIMITEUSER).trim();
+        String usuario = line.substring(index, index + Veterinario.LIMITEUSER - 1).trim();
         index += Veterinario.LIMITEUSER;
-        String senha = line.substring(index, index + Veterinario.LIMITESENHA).trim();
+        String senha = line.substring(index, index + Veterinario.LIMITESENHA - 1).trim();
         index += Veterinario.LIMITESENHA;
-        String nome = line.substring(index, index + Veterinario.LIMITENOME).trim();
+        String nome = line.substring(index, index + Veterinario.LIMITENOME - 1).trim();
         index += Veterinario.LIMITENOME;
-        int crmv = Integer.parseInt(line.substring(index, index + Veterinario.LIMITECRMV));
+        int crmv = Integer.parseInt(line.substring(index, line.length()));
 
         veterinario.setUser(usuario);
         veterinario.setSenha(senha);
