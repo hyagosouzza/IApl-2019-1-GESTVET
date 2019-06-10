@@ -1,0 +1,122 @@
+<app-user></app-user>
+<div>
+  <h2>Medicamentos</h2>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Dosagem</th>
+      <th>Quantidade</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let medicamento of medicamentos">
+      <td>{{medicamento.id}}</td>
+      <td>{{medicamento.nome}}</td>
+      <td>{{medicamento.preco}}</td>
+      <td>{{medicamento.dosagem}}</td>
+      <td>{{medicamento.quantidade}}</td>
+      <td style="width: 45%"><button class="btn btn-info" (click)="findOne(medicamento)" data-toggle="modal"
+                                     data-target="#modalVer">
+        Ver
+      </button>
+
+        <button type="button" class="btn btn-primary" (click)="findOne(medicamento)"
+                data-toggle="modal" data-target="#modalEditar">
+          Editar
+        </button>
+
+        <button class="btn btn-danger" (click)="deletarMedicamento(medicamento)"> Deletar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVer" tabindex="-1" role="dialog" aria-labelledby="modalVerTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalVerTitle">Medicamento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="findOneById != null" class="modal-body">
+        <p><b>ID:</b> {{findOneById.id}}</p>
+        <p><b>Nome:</b> {{findOneById.nome}}</p>
+        <p><b>Preço:</b> {{findOneById.preco}}</p>
+        <p><b>Dosagem:</b> {{findOneById.dosagem}}</p>
+        <p><b>Quantidade:</b> {{findOneById.quantidade}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarTitle">Medicamento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="findOneById != null" class="modal-body">
+          <p><b>ID:</b> {{findOneById.id}}</p>
+          <p><b>Nome:</b> {{findOneById.nome}}</p>
+          <p><b>Preço:</b> {{findOneById.preco}}</p>
+          <p><b>Dosagem:</b> {{findOneById.dosagem}}</p>
+          <p><b>Quantidade:</b> {{findOneById.quantidade}}</p>
+        </div>
+        <hr>
+        <h3 align="center">Editar</h3>
+        <div>
+          <form>
+            <div class="row">
+
+              <div class="col-4">
+                <label for="nome">Nome:</label>
+                <input [(ngModel)]="medicamentoUpdate.nome" placeholder="Nome" name="nome" class="form-control"
+                       id="nome" required="required">
+              </div>
+
+              <div class="col-6">
+                <label for="preco">Preço:</label>
+                <input [(ngModel)]="medicamentoUpdate.preco" placeholder="Preço" name="preco" class="form-control"
+                       id="preco" required>
+              </div>
+
+              <div class="col-4">
+                <label for="dosagem">Dosagem:</label>
+                <input [(ngModel)]="medicamentoUpdate.dosagem" placeholder="Dosagem" name="dosagem" class="form-control"
+                       id="dosagem" required>
+              </div>
+
+              <div class="col-4">
+                <label for="dosagem">Quantidade:</label>
+                <input [(ngModel)]="medicamentoUpdate.quantidade" placeholder="Quantidade" name="quantidade" class="form-control"
+                       id="quantidade" required>
+              </div>
+            </div>
+            <br>
+            <button class="btn btn-success" (click)="updateMedicamento()">Editar</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>
+

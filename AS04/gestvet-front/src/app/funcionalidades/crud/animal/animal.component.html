@@ -1,0 +1,124 @@
+<app-user></app-user>
+<div>
+  <h2>Animais</h2>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Tipo</th>
+      <th>Raça</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let animal of animais">
+      <td>{{animal.id}}</td>
+      <td>{{animal.nome}}</td>
+      <td>{{animal.idade}}</td>
+      <td>{{animal.tipo}}</td>
+      <td>{{animal.raca}}</td>
+
+      <td style="width: 45%"><button class="btn btn-info" (click)="findOne(animal)" data-toggle="modal"
+                                     data-target="#modalVer">
+        Ver
+      </button>
+
+        <button type="button" class="btn btn-primary" (click)="findOne(animal)"
+                data-toggle="modal" data-target="#modalEditar">
+          Editar
+        </button>
+
+        <button class="btn btn-danger" (click)="deletarAnimal(animal)"> Deletar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalVer" tabindex="-1" role="dialog" aria-labelledby="modalVerTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalVerTitle">Animal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="findOneById != null" class="modal-body">
+        <p><b>ID:</b> {{findOneById.id}}</p>
+        <p><b>Nome:</b> {{findOneById.nome}}</p>
+        <p><b>idade:</b> {{findOneById.idade}}</p>
+        <p><b>Tipo:</b> {{findOneById.tipo}}</p>
+        <p><b>Raça:</b> {{findOneById.raca}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarTitle">Animal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="findOneById != null" class="modal-body">
+          <p><b>ID:</b> {{findOneById.id}}</p>
+          <p><b>Nome:</b> {{findOneById.nome}}</p>
+          <p><b>idade:</b> {{findOneById.idade}}</p>
+          <p><b>Tipo:</b> {{findOneById.tipo}}</p>
+          <p><b>Raça:</b> {{findOneById.raca}}</p>
+        </div>
+        <hr>
+        <h3 align="center">Editar</h3>
+        <div>
+          <form>
+            <div class="row">
+
+              <div class="col-4">
+                <label for="idade">Idade:</label>
+                <input [(ngModel)]="animalUpdate.idade" placeholder="Idade" name="idade" class="form-control"
+                       id="idade" required="required">
+              </div>
+
+              <div class="col-6">
+                <label for="nome">Nome:</label>
+                <input [(ngModel)]="animalUpdate.nome" placeholder="Nome" name="nome" class="form-control"
+                       id="nome" required>
+              </div>
+
+              <div class="col-4">
+                <label for="tipo">Tipo:</label>
+                <input [(ngModel)]="animalUpdate.tipo" placeholder="Tipo" name="tipo" class="form-control"
+                       id="tipo" required>
+              </div>
+
+              <div class="col-4">
+                <label for="raca">Raça:</label>
+                <input [(ngModel)]="animalUpdate.raca" placeholder="Raça" name="raca" class="form-control" id="raca"
+                       required>
+              </div>
+
+            </div>
+            <br>
+            <button class="btn btn-success" (click)="updateAnimal()">Editar</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+      </div>
+    </div>
+  </div>
+</div>
+
