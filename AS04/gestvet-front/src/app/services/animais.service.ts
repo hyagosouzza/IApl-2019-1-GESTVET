@@ -6,7 +6,7 @@ import { TokenStorage } from './token.storage';
 @Injectable()
 export class AnimaisService {
 
-  baseUrl = 'http://localhost:8080/api/animais/';
+  baseUrl = 'http://localhost:8080/gestvet/animais/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',

@@ -6,12 +6,12 @@ const TOKEN_KEY = 'AuthToken';
 @Injectable()
 export class TokenStorage {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   signOut() {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.clear();
-    this.router.navigate(['login']);
+    
   }
 
   public saveToken(token: string) {

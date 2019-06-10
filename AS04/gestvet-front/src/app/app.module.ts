@@ -16,6 +16,7 @@ import { AnimalComponent } from './funcionalidades/crud/animal/animal.component'
 import { MedicamentoComponent } from './funcionalidades/crud/medicamento/medicamento.component';
 import {MedicamentoService} from './services/medicamento.service';
 import { CriarMedicamentoComponent } from './funcionalidades/crud/medicamento/criar-medicamento/criar-medicamento.component';
+import { NotifyService } from './services/notify/notify.service';
 
 const appRoutes: Routes = [
   {
@@ -69,7 +70,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuardService, TokenStorage, AnimaisService, MedicamentoService],
+  providers: [AuthService, AuthGuardService, TokenStorage, AnimaisService, MedicamentoService, NotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
