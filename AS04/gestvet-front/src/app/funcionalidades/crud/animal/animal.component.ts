@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimaisService} from '../../../services/animais.service';
+import { AnimalsService} from '../../../services/animals.service';
 import { Animal} from '../../../models/animal.model';
 
 @Component({
@@ -9,17 +9,17 @@ import { Animal} from '../../../models/animal.model';
 })
 export class AnimalComponent implements OnInit {
 
-  animais: Animal[];
+  animals: Animal[];
   animal: Animal = new Animal();
-  animalUpdate: Animal = new Animal();
+  updateAnimal: Animal = new Animal();
   findOneById: any;
 
-  constructor(private animalService: AnimaisService) { }
+  constructor(private animalService: AnimalsService) { }
 
   ngOnInit() {
     this.animalService.getAnimais()
       .subscribe(data => {
-        this.animais = data;
+        this.animals = data;
     });
   }
 
@@ -27,14 +27,14 @@ export class AnimalComponent implements OnInit {
     this.animalService.findOne(animal)
       .subscribe(data => {
         this.findOneById = data;
-        this.animalUpdate = this.findOneById;
+        this.updateAnimal = this.findOneById;
       });
   }
 
-  updateAnimal(): void {
+  putAnimal(): void {
 
-    console.log(this.animalUpdate);
-    this.animalService.updateAnimal(this.animalUpdate)
+    console.log(this.updateAnimal);
+    this.animalService.putAnimal(this.updateAnimal)
       .subscribe(data => {
         alert('Animal Editado!');
         location.reload();
@@ -45,7 +45,7 @@ export class AnimalComponent implements OnInit {
 
     this.animalService.deleteAnimal(animal)
       .subscribe(data => {
-        this.animais = this.animais.filter(u => u !== animal);
+        this.animals = this.animals.filter(u => u !== animal);
       });
   }
 

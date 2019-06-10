@@ -4,7 +4,7 @@ import { Animal } from '../models/animal.model';
 import { TokenStorage } from './token.storage';
 
 @Injectable()
-export class AnimaisService {
+export class AnimalsService {
 
   baseUrl = 'http://localhost:8080/api/animais/';
 
@@ -28,7 +28,7 @@ export class AnimaisService {
     return this.http.get<Animal>(this.baseUrl + animal.id, { headers: this.headers });
   }
 
-  public updateAnimal(animal) {
+  public putAnimal(animal) {
     return this.http.put(this.baseUrl + animal.id, animal, { headers: this.headers });
   }
 
