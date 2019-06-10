@@ -1,6 +1,6 @@
 package com.devteam.backend.gestvet.security.services;
 
-import com.devteam.backend.gestvet.model.Medicamento;
+import com.devteam.backend.gestvet.model.Drug;
 import com.devteam.backend.gestvet.repository.MedicamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,36 +13,36 @@ public class MedicamentoServiceImpl implements MedicamentoService {
     private MedicamentoRepository repository;
 
     @Override
-    public Medicamento create(Medicamento medicamento) {
-        return repository.save(medicamento);
+    public Drug create(Drug drug) {
+        return repository.save(drug);
     }
 
     @Override
-    public Medicamento delete(Long id) {
-        Medicamento medicamento = findById(id);
-        if(medicamento != null){
-            repository.delete(medicamento);
+    public Drug delete(Long id) {
+        Drug drug = findById(id);
+        if(drug != null){
+            repository.delete(drug);
         }
-        return medicamento;
+        return drug;
     }
 
     @Override
-    public List<Medicamento> findAll() {
+    public List<Drug> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Medicamento findById(Long id) {
+    public Drug findById(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public Medicamento findByNome(String nome) {
+    public Drug findByNome(String nome) {
         return repository.findByNome(nome);
     }
 
     @Override
-    public Medicamento update(Medicamento medicamento) {
-        return repository.save(medicamento);
+    public Drug update(Drug drug) {
+        return repository.save(drug);
     }
 }
