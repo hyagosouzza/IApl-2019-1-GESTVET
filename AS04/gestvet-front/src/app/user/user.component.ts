@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorage } from '../services/token.storage';
-import { AnimaisService } from '../services/animais.service';
+import { AnimalsService } from '../services/animals.service';
 import { Animal } from '../models/animal.model';
 import { AuthService } from '../services/auth.service';
 
@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   animais: Array<Animal> = new Array();
   user: any;
 
-  constructor(private token: TokenStorage, private animaisService: AnimaisService, private authService: AuthService) {
+  constructor(private token: TokenStorage, private animalsService: AnimalsService, private authService: AuthService) {
     authService.getCurrentUser().toPromise().then(user => {
       this.user = user;
     });
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   }
 
   getAnimais() {
-    this.animaisService.getAnimais().toPromise().then( animais => {
+    this.animalsService.getAnimais().toPromise().then( animais => {
       this.animais = animais;
     });
   }

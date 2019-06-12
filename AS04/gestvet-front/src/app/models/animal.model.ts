@@ -1,7 +1,7 @@
 export class Animal {
     id: number;
-    nome: string;
-    raca: string;
-    idade: number;
-    tipo: string;
+    name: string;
+    breed: string;
+    age: number;
+    species: string;
 }
