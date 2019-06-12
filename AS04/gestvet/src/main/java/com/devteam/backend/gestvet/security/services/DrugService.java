@@ -4,7 +4,7 @@ import com.devteam.backend.gestvet.model.Drug;
 
 import java.util.List;
 
-public interface MedicamentoService {
+public interface DrugService {
 
     Drug create(Drug drug);
 
@@ -14,7 +14,7 @@ public interface MedicamentoService {
 
     Drug findById(Long id);
 
-    Drug findByNome(String nome);
+    Drug findByName(String name);
 
     Drug update(Drug drug);
 
