@@ -16,11 +16,11 @@ export class DrugService {
   constructor(private http: HttpClient, private token: TokenStorage) {
   }
 
-  getDrugs() {
+  public getDrugs() {
     return this.http.get<Drug[]>(this.baseUrl, { headers: this.headers } );
   }
 
-  createDrug(drug) {
+  public createDrug(drug) {
     return this.http.post<Drug>(this.baseUrl, drug, { headers: this.headers });
   }
 

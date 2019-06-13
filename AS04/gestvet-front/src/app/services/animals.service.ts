@@ -16,11 +16,11 @@ export class AnimalsService {
   constructor(private http: HttpClient, private token: TokenStorage) {
   }
 
-  getAnimais() {
+  public getAnimals() {
     return this.http.get<Animal[]>(this.baseUrl, { headers: this.headers });
   }
 
-  createAnimal(animal) {
+  public createAnimal(animal) {
     return this.http.post<Animal>(this.baseUrl, animal, { headers: this.headers });
   }
 

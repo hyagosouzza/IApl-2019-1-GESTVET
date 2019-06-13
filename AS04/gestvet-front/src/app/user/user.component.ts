@@ -13,7 +13,7 @@ import { WindowRef } from '../WindowRef';
 })
 export class UserComponent implements OnInit {
 
-  animais: Array<Animal> = new Array();
+  animals: Array<Animal> = new Array();
   user: any;
   labels: {}
 
@@ -29,8 +29,8 @@ export class UserComponent implements OnInit {
   }
 
   getAnimais() {
-    this.animalsService.getAnimais().toPromise().then( animais => {
-      this.animais = animais;
+    this.animalsService.getAnimals().toPromise().then( animals => {
+      this.animals = animals;
     });
   }
 

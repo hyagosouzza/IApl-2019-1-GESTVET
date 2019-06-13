@@ -21,12 +21,12 @@
       <td>{{animal.breed}}</td>
 
       <td style="width: 45%"><button class="btn btn-info" (click)="findOne(animal)" data-toggle="modal"
-                                     data-target="#modalVer">
+                                     data-target="#modalView">
         {{ labels.actions.see }}
       </button>
 
         <button type="button" class="btn btn-primary" (click)="findOne(animal)"
-                data-toggle="modal" data-target="#modalEditar">
+                data-toggle="modal" data-target="#modalEdit">
           {{ labels.actions.edit }}
         </button>
 
@@ -38,11 +38,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalVer" tabindex="-1" role="dialog" aria-labelledby="modalVerTitle" aria-hidden="true">
+<div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="modalViewTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalVerTitle">{{ labels.animal.titleModal }}</h5>
+        <h5 class="modal-title" id="modalViewTitle">{{ labels.animal.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -62,11 +62,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarTitle" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEditarTitle">{{ labels.animal.titleModal }}</h5>
+        <h5 class="modal-title" id="modalEditTitle">{{ labels.animal.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -21,7 +21,7 @@ export class AnimalComponent implements OnInit {
 
   ngOnInit() {
     this.selectLanguage();
-    this.animalService.getAnimais()
+    this.animalService.getAnimals()
       .subscribe(data => {
         this.animals = data;
     });
