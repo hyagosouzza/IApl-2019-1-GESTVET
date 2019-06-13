@@ -1,6 +1,9 @@
 export class Messages {
     messages = {
         pt:{
+            gereral:{
+                title: 'GestVet'
+            },
             actions:{
                 see: 'Ver',
                 edit: 'Editar',
@@ -47,6 +50,9 @@ export class Messages {
             }
         },
         en:{
+            gereral:{
+                title: 'GestVet'
+            },
             actions:{
                 see: 'See',
                 edit: 'Edit',
@@ -93,6 +99,9 @@ export class Messages {
             }
         },
         es:{
+            gereral:{
+                title: 'GestVet'
+            },
             actions:{
                 see: 'Ver',
                 edit: 'Editar',
