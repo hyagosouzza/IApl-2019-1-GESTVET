@@ -1,15 +1,15 @@
 <app-user></app-user>
 <div>
-  <h2>Medicamentos</h2>
+  <h2>{{ labels.drug.title }}</h2>
 
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Preço</th>
-      <th>Dosagem</th>
-      <th>Quantidade</th>
+      <th>{{ labels.drug.tableId }}</th>
+      <th>{{ labels.drug.tableName }}</th>
+      <th>{{ labels.drug.tablePrice }}</th>
+      <th>{{ labels.drug.tableDosage }}</th>
+      <th>{{ labels.drug.tableQuantity }}</th>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
       <td>{{drug.quantity}}</td>
       <td style="width: 45%"><button class="btn btn-info" (click)="findOne(drug)" data-toggle="modal"
                                      data-target="#modalVer">
-        Ver
+        {{ labels.actions.see }}
       </button>
 
         <button type="button" class="btn btn-primary" (click)="findOne(drug)"
@@ -29,7 +29,7 @@
           Editar
         </button>
 
-        <button class="btn btn-danger" (click)="deleteDrug(drug)"> Deletar</button>
+        <button class="btn btn-danger" (click)="deleteDrug(drug)"> {{ labels.actions.delete }}</button>
       </td>
     </tr>
     </tbody>
@@ -41,20 +41,20 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalVerTitle">Medicamento</h5>
+        <h5 class="modal-title" id="modalVerTitle">{{ labels.drug.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div *ngIf="findOneById != null" class="modal-body">
-        <p><b>ID:</b> {{findOneById.id}}</p>
-        <p><b>Nome:</b> {{findOneById.name}}</p>
-        <p><b>Preço:</b> {{findOneById.price}}</p>
-        <p><b>Dosagem:</b> {{findOneById.dosage}}</p>
-        <p><b>Quantidade:</b> {{findOneById.quantity}}</p>
+        <p><b>{{ labels.drug.tableId }}:</b> {{findOneById.id}}</p>
+        <p><b>{{ labels.drug.tableName }}:</b> {{findOneById.name}}</p>
+        <p><b>{{ labels.drug.tablePrice }}:</b> {{findOneById.price}}</p>
+        <p><b>{{ labels.drug.tableDosage }}:</b> {{findOneById.dosage}}</p>
+        <p><b>{{ labels.drug.tableQuantity }}:</b> {{findOneById.quantity}}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions.leave }}</button>
       </div>
     </div>
   </div>
@@ -65,56 +65,56 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEditarTitle">Medicamento</h5>
+        <h5 class="modal-title" id="modalEditarTitle">{{ labels.drug.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div *ngIf="findOneById != null" class="modal-body">
-          <p><b>ID:</b> {{findOneById.id}}</p>
-          <p><b>Nome:</b> {{findOneById.name}}</p>
-          <p><b>Preço:</b> {{findOneById.price}}</p>
-          <p><b>Dosagem:</b> {{findOneById.dosage}}</p>
-          <p><b>Quantidade:</b> {{findOneById.quantity}}</p>
+          <p><b>{{ labels.drug.tableId }}:</b> {{findOneById.id}}</p>
+          <p><b>{{ labels.drug.tableName }}:</b> {{findOneById.name}}</p>
+          <p><b>{{ labels.drug.tablePrice }}:</b> {{findOneById.price}}</p>
+          <p><b>{{ labels.drug.tableDosage }}:</b> {{findOneById.dosage}}</p>
+          <p><b>{{ labels.drug.tableQuantity }}:</b> {{findOneById.quantity}}</p>
         </div>
         <hr>
-        <h3 align="center">Editar</h3>
+        <h3 align="center">{{ labels.actions.edit }}</h3>
         <div>
           <form>
             <div class="row">
 
               <div class="col-4">
-                <label for="name">Nome:</label>
+                <label for="name">{{ labels.drug.tableName }}:</label>
                 <input [(ngModel)]="updateDrug.name" placeholder="Name" name="name" class="form-control"
                        id="name" required="required">
               </div>
 
               <div class="col-6">
-                <label for="price">Preço:</label>
+                <label for="price">{{ labels.drug.tablePrice }}:</label>
                 <input [(ngModel)]="updateDrug.price" placeholder="Price" name="price" class="form-control"
                        id="price" required>
               </div>
 
               <div class="col-4">
-                <label for="dosage">Dosagem:</label>
+                <label for="dosage">{{ labels.drug.tableDosage }}:</label>
                 <input [(ngModel)]="updateDrug.dosage" placeholder="Dosage" name="dosage" class="form-control"
                        id="dosage" required>
               </div>
 
               <div class="col-4">
-                <label for="quantity">Quantidade:</label>
+                <label for="quantity">{{ labels.drug.tableQuantity }}:</label>
                 <input [(ngModel)]="updateDrug.quantity" placeholder="Quantity" name="quantity" class="form-control"
                        id="quantity" required>
               </div>
             </div>
             <br>
-            <button class="btn btn-success" (click)="putDrug()">Editar</button>
+            <button class="btn btn-success" (click)="putDrug()">{{ labels.actions.edit }}</button>
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ table.actions.leave }}</button>
       </div>
     </div>
   </div>

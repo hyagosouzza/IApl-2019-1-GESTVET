@@ -45,13 +45,12 @@ export class LoginComponent {
 
   selectLanguage() {
     var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
-    var messages = this.messages.getMessages();
     if (country === 'BR'){
-      this.labels = messages.pt;
+      this.labels = this.messages.messages.pt;
     } else if (country === 'US'){
-      this.labels = messages.en
+      this.labels = this.messages.messages.en;
     } else if (country === 'ES'){
-      this.labels = messages.es
+      this.labels = this.messages.messages.es;
     }
   }
 

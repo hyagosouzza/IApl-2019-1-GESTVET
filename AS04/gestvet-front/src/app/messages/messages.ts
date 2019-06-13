@@ -6,7 +6,8 @@ export class Messages {
                 edit: 'Editar',
                 delet: 'Deletar',
                 register: 'Cadastrar',
-                leave: 'Sair'
+                leave: 'Sair',
+                logout: 'Deslogar'
             },
             animal:{
                 title: 'Animais',
@@ -41,7 +42,8 @@ export class Messages {
             },
             login:{
                 user: 'Usuário',
-                password: 'Senha'
+                password: 'Senha',
+                signIn: 'Logar'
             }
         },
         en:{
@@ -50,7 +52,8 @@ export class Messages {
                 edit: 'Edit',
                 delet: 'Delet',
                 register: 'Register',
-                leave: 'Leave'
+                leave: 'Leave',
+                logout: 'Log out'
             },
             animal:{
                 title: 'Animals',
@@ -85,7 +88,8 @@ export class Messages {
             },
             login:{
                 user: 'User',
-                password: 'Password'
+                password: 'Password',
+                signIn: 'Sign In'
             }
         },
         es:{
@@ -94,7 +98,8 @@ export class Messages {
                 edit: 'Editar',
                 delet: 'Borrar',
                 register: 'Registro',
-                leave: 'Dejar'
+                leave: 'Dejar',
+                logout: 'Finalizar la Sesión'
             },
             animal:{
                 title: 'Animales',
@@ -129,12 +134,9 @@ export class Messages {
             },
             login:{
                 user: 'Usuario',
-                password: 'Contraseña'
+                password: 'Contraseña',
+                signIn: 'Sign In'
             }
         }
-    }
-
-    getMessages(){
-        return this.messages;
     }
 }
