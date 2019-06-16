@@ -83,27 +83,27 @@
             <div class="row">
 
               <div class="col-6">
-                <label for="name">{{ labels.drug?.tableName }}:</label>
-                <input [(ngModel)]="updateDrug.name" placeholder="Name" name="name" class="form-control" id="name"
-                  required="required">
+                <label for="name">{{ labels.drug.tableName }}:</label>
+                <input [(ngModel)]="updateDrug.name" placeholder="{{ labels.drug.tableName }}" name="name"
+                  class="form-control" id="name" required="required">
               </div>
 
               <div class="col-6">
-                <label for="price">{{ labels.drug?.tablePrice }}:</label>
-                <input [(ngModel)]="updateDrug.price" placeholder="Price" name="price" class="form-control" id="price"
-                  required>
+                <label for="price">{{ labels.drug.tablePrice }}:</label>
+                <input type="text" [(ngModel)]="updateDrug.price" placeholder="{{ labels.drug.tablePrice }}" name="price"
+                  class="form-control price" id="price" require>
               </div>
 
               <div class="col-6">
-                <label for="dosage">{{ labels.drug?.tableDosage }}:</label>
-                <input [(ngModel)]="updateDrug.dosage" placeholder="Dosage" name="dosage" class="form-control"
-                  id="dosage" required>
+                <label for="dosage">{{ labels.drug.tableDosage }}:</label>
+                <input [(ngModel)]="updateDrug.dosage" placeholder="{{ labels.drug.tableDosage }}" name="dosage"
+                  class="form-control" id="dosage" required>
               </div>
 
               <div class="col-6">
-                <label for="quantity">{{ labels.drug?.tableQuantity }}:</label>
-                <input [(ngModel)]="updateDrug.quantity" placeholder="Quantity" name="quantity" class="form-control"
-                  id="quantity" required>
+                <label for="quantity">{{ labels.drug.tableQuantity }}:</label>
+                <input type="text" [(ngModel)]="updateDrug.quantity" placeholder="{{ labels.drug.tableQuantity }}" name="quantity"
+                  class="form-control quantity" id="quantity" required>
               </div>
             </div>
             <br>
@@ -130,31 +130,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="createDrug">
           <div class="row">
 
             <div class="col-6">
               <label for="name">{{ labels.drug?.tableName }}:</label>
-              <input type="text" [(ngModel)]="drug.name" placeholder="Name" name="name" class="form-control" id="name"
-                required="required">
+              <input type="text" [(ngModel)]="drug.name" placeholder="{{ labels.drug?.tableName }}" name="name"
+                class="form-control" id="name" required="required">
             </div>
 
             <div class="col-6">
               <label for="price">{{ labels.drug?.tablePrice }}:</label>
-              <input type="number" [(ngModel)]="drug.price" placeholder="Price" name="price" class="form-control"
-                id="price" required>
+              <input type="text" [(ngModel)]="drug.price" placeholder="{{ labels.drug?.tablePrice }}" name="price"
+                class="form-control price" id="price" required>
             </div>
 
             <div class="col-6">
               <label for="dosage">{{ labels.drug?.tableDosage }}:</label>
-              <input type="text" [(ngModel)]="drug.dosage" placeholder="Dosage" name="dosage" class="form-control"
-                id="dosage" required>
+              <input type="text" [(ngModel)]="drug.dosage" placeholder="{{ labels.drug?.tableDosage }}" name="dosage"
+                class="form-control" id="dosage" required>
             </div>
 
             <div class="col-6">
               <label for="quantity">{{ labels.drug?.tableQuantity }}:</label>
-              <input type="number" [(ngModel)]="drug.quantity" placeholder="Quantity" name="quantity"
-                class="form-control" id="quantity" required>
+              <input type="text" [(ngModel)]="drug.quantity" placeholder="{{ labels.drug?.tableQuantity }}"
+                name="quantity" class="form-control quantity" id="quantity">
             </div>
 
           </div>

@@ -3,6 +3,9 @@ import { Drug } from '../../../models/drug.model';
 import { DrugService } from '../../../services/drugs/drug.service';
 import { Messages } from '../../../messages/messages';
 import { WindowRef } from '../../../WindowRef';
+import { NotifyService } from '../../../services/notify/notify.service';
+
+declare let $: any;
 
 @Component({
   selector: 'app-drug',
@@ -15,15 +18,21 @@ export class DrugComponent implements OnInit {
   drug: Drug = new Drug();
   updateDrug: Drug = new Drug();
   findOneById: any;
-  labels: {};
+  labels: any;
 
-  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef) { }
+  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService) { }
 
   ngOnInit() {
+    this.initData();
+    this.selectLanguage();
+    $('.price').mask('00000,00');
+    $('.quantity').mask('0#');
+  }
+
+  initData() {
     this.drugService.getDrugs().subscribe(
       data => this.drugs = data
     );
-    this.selectLanguage();
   }
 
   findOne(drug: Drug): void {
@@ -32,18 +41,39 @@ export class DrugComponent implements OnInit {
     );
   }
 
+  checkFields() {
+    
+    if(this.drug.name == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugName, "orange");
+      return false;
+    }
+    if(this.drug.price == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugPrice, "orange");
+      return false;
+    }
+    if(this.drug.dosage == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugDosage, "orange");
+      return false;
+    }
+    if(this.drug.quantity == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugQuantity, "orange");
+      return false;
+    }
+    this.drug.quantity = Number.parseInt(this.drug.quantity.toString());
+    this.drug.price = Number.parseFloat(this.drug.price.toString());
+    return true;
+  }
+
   createDrug(): void {
-    if (this.drug.name === (null) ||
-      this.drug.price === (null) ||
-      this.drug.dosage === (null) ||
-      this.drug.quantity === (null) ) {
-      alert('Todos os campos devem ser preenchidos');
+    if (!this.checkFields()) {
       return;
     }
 
     this.drugService.createDrug(this.drug)
       .subscribe(data => {
         alert('Medicamento cadastrado com sucesso.');
+        this.initData();
+        $('.modal').modal('hide');
       });
 
   }
@@ -52,7 +82,8 @@ export class DrugComponent implements OnInit {
     this.drugService.putDrug(this.updateDrug).subscribe(
       data => {
         alert('Medicamento editado');
-        location.reload();
+        this.initData();
+        $('.modal').modal('hide');
       }
     );
   }

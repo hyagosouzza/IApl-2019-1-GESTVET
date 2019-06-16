@@ -3,6 +3,9 @@ import { AnimalsService} from '../../../services/animals/animals.service';
 import { Animal} from '../../../models/animal.model';
 import { Messages } from '../../../messages/messages';
 import { WindowRef } from '../../../WindowRef';
+import { NotifyService } from '../../../services/notify/notify.service';
+
+declare let $: any;
 
 @Component({
   selector: 'app-animal',
@@ -11,16 +14,21 @@ import { WindowRef } from '../../../WindowRef';
 })
 export class AnimalComponent implements OnInit {
 
-  labels = {};
+  labels: any;
   animals: Animal[];
   animal: Animal = new Animal();
   updateAnimal: Animal = new Animal();
   findOneById: any;
 
-  constructor(private animalService: AnimalsService, private messages: Messages, private winRef: WindowRef) { }
+  constructor(private animalService: AnimalsService, private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService) { }
 
   ngOnInit() {
     this.selectLanguage();
+    this.initData();
+    $('.age').mask('0#');
+  }
+
+  initData() {
     this.animalService.getAnimals()
       .subscribe(data => {
         this.animals = data;
@@ -36,12 +44,11 @@ export class AnimalComponent implements OnInit {
   }
 
   putAnimal(): void {
-
-    console.log(this.updateAnimal);
     this.animalService.putAnimal(this.updateAnimal)
       .subscribe(data => {
         alert('Animal Editado!');
-        location.reload();
+        this.initData();
+        $('.modal').modal('hide');
       });
   }
 
@@ -53,12 +60,30 @@ export class AnimalComponent implements OnInit {
       });
   }
 
+  checkFields() {
+    
+    if(this.animal.name == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createAnimalName, "orange");
+      return false;
+    }
+    if(this.animal.age == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createAnimalAge, "orange");
+      return false;
+    }
+    if(this.animal.breed == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createAnimalBreed, "orange");
+      return false;
+    }
+    if(this.animal.species == null || '') {
+      this.notifyService.createNotify("Aviso", this.labels.notifications.createAnimalSpecies, "orange");
+      return false;
+    }
+    this.animal.age = Number.parseInt(this.animal.age.toString());
+    return true;
+  }
+
   createAnimal(): void {
-    if(this.animal.age == null ||
-      this.animal.name == (null || '') ||
-      this.animal.breed == (null || '') ||
-      this.animal.species == (null || '') ) {
-      alert('Todos os campos devem ser preenchidos');
+    if (!this.checkFields()) {
       return;
     }
 
@@ -66,6 +91,8 @@ export class AnimalComponent implements OnInit {
       .subscribe(data => {
         alert("Animal cadastrado com sucesso.");
         (document.getElementById("formAnimal") as HTMLFormElement).reset();
+        this.initData();
+        $('.modal').modal('hide');
       });
 
   }

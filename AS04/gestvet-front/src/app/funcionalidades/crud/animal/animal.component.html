@@ -84,25 +84,25 @@
 
               <div class="col-6">
                 <label for="name">{{ labels.animal?.tableName }}:</label>
-                <input [(ngModel)]="updateAnimal.name" placeholder="Name" name="name" class="form-control" id="name"
+                <input [(ngModel)]="updateAnimal.name" placeholder="{{ labels.animal?.tableName }}" name="name" class="form-control" id="name"
                   required>
               </div>
 
               <div class="col-6">
                 <label for="age">{{ labels.animal?.tableAge }}:</label>
-                <input [(ngModel)]="updateAnimal.age" placeholder="Age" name="age" class="form-control" id="age"
+                <input type="text" [(ngModel)]="updateAnimal.age" placeholder="{{ labels.animal?.tableAge }}" name="age" class="form-control age" id="age"
                   required="required">
               </div>
 
               <div class="col-6">
                 <label for="species">{{ labels.animal?.tableSpecies }}:</label>
-                <input [(ngModel)]="updateAnimal.species" placeholder="Species" name="species" class="form-control"
+                <input [(ngModel)]="updateAnimal.species" placeholder="{{ labels.animal?.tableSpecies }}" name="species" class="form-control"
                   id="species" required>
               </div>
 
               <div class="col-6">
                 <label for="breed">{{ labels.animal?.tableBreed }}:</label>
-                <input [(ngModel)]="updateAnimal.breed" placeholder="Breed" name="breed" class="form-control" id="breed"
+                <input [(ngModel)]="updateAnimal.breed" placeholder="{{ labels.animal?.tableBreed }}" name="breed" class="form-control" id="breed"
                   required>
               </div>
 
@@ -136,19 +136,19 @@
 
             <div class="col-6">
               <label for="name">{{ labels.animal?.tableName }}:</label>
-              <input type="text" [(ngModel)]="animal.name" placeholder="Name" name="name" class="form-control" id="name"
+              <input type="text" [(ngModel)]="animal.name" placeholder="{{ labels.animal?.tableName }}" name="name" class="form-control" id="name"
                 required>
             </div>
 
             <div class="col-6">
               <label for="age">{{ labels.animal?.tableAge }}:</label>
-              <input type="number" [(ngModel)]="animal.age" placeholder="Age" name="age" class="form-control" id="age"
+              <input type="text" [(ngModel)]="animal.age" placeholder="{{ labels.animal?.tableAge }}" name="age" class="form-control age" id="age"
                 required="required">
             </div>
 
             <div class="col-6">
               <label for="species">{{ labels.animal?.tableSpecies }}:</label>
-              <input type="text" [(ngModel)]="animal.species" placeholder="Species" name="species" class="form-control"
+              <input type="text" [(ngModel)]="animal.species" placeholder="{{ labels.animal?.tableSpecies }}" name="species" class="form-control"
                 id="species" required>
             </div>
 
