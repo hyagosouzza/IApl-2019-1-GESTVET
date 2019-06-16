@@ -25,6 +25,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import static com.devteam.backend.gestvet.model.RoleName.ROLE_ADMIN;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -86,21 +88,21 @@ public class AuthRestAPIs {
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
                 signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
 
-        Set<String> strRoles = signUpRequest.getRole();
+        Set<Role> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
         strRoles.forEach(role -> {
-        	switch(role) {
-	    		case "admin":
+        	switch(role.getName()) {
+                case ROLE_ADMIN:
 	    			Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Admin Role not find."));
 	    			roles.add(adminRole);
-	    			
+
 	    			break;
 	    		default:
 	        		Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
 	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-	        		roles.add(userRole);        			
+	        		roles.add(userRole);
         	}
         });
         

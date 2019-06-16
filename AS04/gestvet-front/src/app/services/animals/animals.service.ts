@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Animal } from '../models/animal.model';
-import { TokenStorage } from './token.storage';
+import { Animal } from '../../models/animal.model';
+import { TokenStorage } from '../token.storage';
 
 @Injectable()
 export class AnimalsService {
 
-  baseUrl = 'http://localhost:8080/gestvet/animais/';
+  baseUrl = 'http://localhost:8080/gestvet/animals/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',

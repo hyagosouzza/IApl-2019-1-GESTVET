@@ -10,7 +10,8 @@ export class Messages {
                 delet: 'Deletar',
                 register: 'Cadastrar',
                 leave: 'Sair',
-                logout: 'Deslogar'
+                logout: 'Deslogar',
+                cancel: 'Cancelar'
             },
             animal:{
                 title: 'Animais',
@@ -59,7 +60,8 @@ export class Messages {
                 delet: 'Delet',
                 register: 'Register',
                 leave: 'Leave',
-                logout: 'Log out'
+                logout: 'Log out',
+                cancel: 'Cancel'
             },
             animal:{
                 title: 'Animals',
@@ -108,7 +110,8 @@ export class Messages {
                 delet: 'Borrar',
                 register: 'Registro',
                 leave: 'Dejar',
-                logout: 'Finalizar la Sesión'
+                logout: 'Finalizar la Sesión',
+                cancel: 'Anular'
             },
             animal:{
                 title: 'Animales',

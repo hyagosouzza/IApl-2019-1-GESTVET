@@ -1,38 +1,39 @@
 <app-user></app-user>
 <div>
-  <h2>{{ labels.animal.title }}</h2>
-
+  <h2>{{ labels.animal?.title }}</h2>
+  <button id="createAnimal" type="button" class="btn btn-success" data-toggle="modal"
+    data-target="#exampleModal">{{ labels.animal?.titleRegister }}</button>
   <table class="table table-striped">
     <thead>
-    <tr>
-      <th>{{ labels.animal.tableId }}</th>
-      <th>{{ labels.animal.tableName }}</th>
-      <th>{{ labels.animal.tableAge }}</th>
-      <th>{{ labels.animal.tableSpecies }}</th>
-      <th>{{ labels.animal.tableBreed }}</th>
-    </tr>
+      <tr>
+        <th>{{ labels.animal?.tableId }}</th>
+        <th>{{ labels.animal?.tableName }}</th>
+        <th>{{ labels.animal?.tableAge }}</th>
+        <th>{{ labels.animal?.tableSpecies }}</th>
+        <th>{{ labels.animal?.tableBreed }}</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let animal of animals">
-      <td>{{animal.id}}</td>
-      <td>{{animal.name}}</td>
-      <td>{{animal.age}}</td>
-      <td>{{animal.species}}</td>
-      <td>{{animal.breed}}</td>
+      <tr *ngFor="let animal of animals">
+        <td>{{animal?.id}}</td>
+        <td>{{animal?.name}}</td>
+        <td>{{animal?.age}}</td>
+        <td>{{animal?.species}}</td>
+        <td>{{animal?.breed}}</td>
 
-      <td style="width: 45%"><button class="btn btn-info" (click)="findOne(animal)" data-toggle="modal"
-                                     data-target="#modalView">
-        {{ labels.actions.see }}
-      </button>
+        <td style="width: 45%"><button class="btn btn-info" (click)="findOne(animal)" data-toggle="modal"
+            data-target="#modalView">
+            {{ labels.actions?.see }}
+          </button>
 
-        <button type="button" class="btn btn-primary" (click)="findOne(animal)"
-                data-toggle="modal" data-target="#modalEdit">
-          {{ labels.actions.edit }}
-        </button>
+          <button type="button" class="btn btn-primary" (click)="findOne(animal)" data-toggle="modal"
+            data-target="#modalEdit">
+            {{ labels.actions?.edit }}
+          </button>
 
-        <button class="btn btn-danger" (click)="deleteAnimal(animal)"> {{ labels.actions.delet }}</button>
-      </td>
-    </tr>
+          <button class="btn btn-danger" (click)="deleteAnimal(animal)"> {{ labels.actions?.delet }}</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -42,20 +43,20 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalViewTitle">{{ labels.animal.titleModal }}</h5>
+        <h5 class="modal-title" id="modalViewTitle">{{ labels.animal?.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div *ngIf="findOneById != null" class="modal-body">
-        <p><b>{{ labels.animal.tableId }}:</b> {{findOneById.id}}</p>
-        <p><b>{{ labels.animal.tableName }}:</b> {{findOneById.name}}</p>
-        <p><b>{{ labels.animal.tableAge }}:</b> {{findOneById.age}}</p>
-        <p><b>{{ labels.animal.tableSpecies }}:</b> {{findOneById.species}}</p>
-        <p><b>{{ labels.animal.tableBreed }}:</b> {{findOneById.breed}}</p>
+        <p><b>{{ labels.animal?.tableId }}:</b> {{findOneById.id}}</p>
+        <p><b>{{ labels.animal?.tableName }}:</b> {{findOneById.name}}</p>
+        <p><b>{{ labels.animal?.tableAge }}:</b> {{findOneById.age}}</p>
+        <p><b>{{ labels.animal?.tableSpecies }}:</b> {{findOneById.species}}</p>
+        <p><b>{{ labels.animal?.tableBreed }}:</b> {{findOneById.breed}}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions.leave }}</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions?.leave }}</button>
       </div>
     </div>
   </div>
@@ -66,59 +67,111 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEditTitle">{{ labels.animal.titleModal }}</h5>
+        <h5 class="modal-title" id="modalEditTitle">{{ labels.animal?.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div *ngIf="findOneById != null" class="modal-body">
-          <p><b>{{ labels.animal.tableId }}:</b> {{findOneById.id}}</p>
-          <p><b>{{ labels.animal.tableName }}:</b> {{findOneById.name}}</p>
-          <p><b>{{ labels.animal.tableAge }}:</b> {{findOneById.age}}</p>
-          <p><b>{{ labels.animal.tableSpecies }}:</b> {{findOneById.species}}</p>
-          <p><b>{{ labels.animal.tableBreed }}:</b> {{findOneById.breed}}</p>
+          <p><b>{{ labels.animal?.tableId }}:</b> {{findOneById.id}}</p>
+          <p><b>{{ labels.animal?.tableName }}:</b> {{findOneById.name}}</p>
+          <p><b>{{ labels.animal?.tableAge }}:</b> {{findOneById.age}}</p>
+          <p><b>{{ labels.animal?.tableSpecies }}:</b> {{findOneById.species}}</p>
+          <p><b>{{ labels.animal?.tableBreed }}:</b> {{findOneById.breed}}</p>
         </div>
         <hr>
-        <h3 align="center">{{ labels.actions.edit }}</h3>
+        <h3 align="center">{{ labels.actions?.edit }}</h3>
         <div>
-          <form>
+          <form *ngIf="animalUpdate">
             <div class="row">
 
               <div class="col-4">
-                <label for="age">{{ labels.animal.tableAge }}:</label>
-                <input [(ngModel)]="animalUpdate.age" placeholder="Age" name="age" class="form-control"
-                       id="age" required="required">
+                <label for="age">{{ labels.animal?.tableAge }}:</label>
+                <input [(ngModel)]="animalUpdate.age" placeholder="Age" name="age" class="form-control" id="age"
+                  required="required">
               </div>
 
               <div class="col-6">
-                <label for="name">{{ labels.animal.tableName }}:</label>
-                <input [(ngModel)]="animalUpdate.name" placeholder="Name" name="name" class="form-control"
-                       id="name" required>
+                <label for="name">{{ labels.animal?.tableName }}:</label>
+                <input [(ngModel)]="animalUpdate.name" placeholder="Name" name="name" class="form-control" id="name"
+                  required>
               </div>
 
               <div class="col-4">
-                <label for="species">{{ labels.animal.tableSpecies }}:</label>
+                <label for="species">{{ labels.animal?.tableSpecies }}:</label>
                 <input [(ngModel)]="animalUpdate.species" placeholder="Species" name="species" class="form-control"
-                       id="species" required>
+                  id="species" required>
               </div>
 
               <div class="col-4">
-                <label for="breed">{{ labels.animal.tableBreed }}:</label>
+                <label for="breed">{{ labels.animal?.tableBreed }}:</label>
                 <input [(ngModel)]="animalUpdate.breed" placeholder="Breed" name="breed" class="form-control" id="breed"
-                       required>
+                  required>
               </div>
 
             </div>
             <br>
-            <button class="btn btn-success" (click)="updateAnimal()">{{ labels.actions.edit }}</button>
+            <button class="btn btn-success" (click)="updateAnimal()">{{ labels.actions?.edit }}</button>
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions.leave }}</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions?.leave }}</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ labels.animal?.titleRegister }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formAnimal">
+          <div class="row">
+
+            <div class="col-6">
+              <label for="age">{{ labels.animal?.tableAge }}:</label>
+              <input type="number" [(ngModel)]="animal.age" placeholder="Age" name="age" class="form-control" id="age"
+                required="required">
+            </div>
+
+            <div class="col-6">
+              <label for="name">{{ labels.animal?.tableName }}:</label>
+              <input type="text" [(ngModel)]="animal.name" placeholder="Name" name="name" class="form-control" id="name"
+                required>
+            </div>
+
+            <div class="col-6">
+              <label for="species">{{ labels.animal?.tableSpecies }}:</label>
+              <input type="text" [(ngModel)]="animal.species" placeholder="Species" name="species" class="form-control"
+                id="species" required>
+            </div>
+
+            <div class="col-6">
+              <label for="breed">{{ labels.animal?.tableBreed }}:</label>
+              <input type="text" [(ngModel)]="animal.breed" placeholder="{{ labels.animal?.tableBreed }}" name="breed" class="form-control"
+                id="breed" required>
+            </div>
+
+          </div>
+          <br>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ labels.actions?.cancel }}</button>
+        <button type="button" class="btn btn-success"
+          (click)="createAnimal(formAnimal)">{{ labels.actions?.register }}</button>
+      </div>
+    </div>
+  </div>
+</div>

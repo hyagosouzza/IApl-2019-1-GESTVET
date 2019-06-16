@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorage } from '../services/token.storage';
-import { AnimalsService } from '../services/animals.service';
+import { AnimalsService } from '../services/animals/animals.service';
 import { Animal } from '../models/animal.model';
 import { AuthService } from '../services/auth.service';
 import { NotifyService } from '../services/notify/notify.service';

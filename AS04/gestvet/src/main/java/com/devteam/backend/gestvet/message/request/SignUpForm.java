@@ -1,5 +1,7 @@
 package com.devteam.backend.gestvet.message.request;
 
+import com.devteam.backend.gestvet.model.Role;
+
 import java.util.Set;
 
 import javax.validation.constraints.*;
@@ -17,8 +19,16 @@ public class SignUpForm {
     @Size(max = 60)
     @Email
     private String email;
-    
-    private Set<String> role;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    private Set<Role> roles;
     
     @NotBlank
     @Size(min = 6, max = 40)
@@ -55,12 +65,5 @@ public class SignUpForm {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public Set<String> getRole() {
-    	return this.role;
-    }
-    
-    public void setRole(Set<String> role) {
-    	this.role = role;
-    }
+
 }

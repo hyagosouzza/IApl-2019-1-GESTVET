@@ -10,11 +10,11 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenStorage } from './services/token.storage';
-import { AnimalsService } from './services/animals.service';
+import { AnimalsService } from './services/animals/animals.service';
 import { CreateAnimalComponent } from './funcionalidades/crud/animal/criar-animal/create-animal.component';
 import { AnimalComponent } from './funcionalidades/crud/animal/animal.component';
 import { DrugComponent } from './funcionalidades/crud/drug/drug.component';
-import { DrugService } from './services/drug.service';
+import { DrugService } from './services/drugs/drug.service';
 import { CreateDrugComponent } from './funcionalidades/crud/drug/create-drug/create-drug.component';
 import { NotifyService } from './services/notify/notify.service';
 import { Messages } from '../app/messages/messages';
@@ -72,7 +72,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuardService, TokenStorage, AnimalsService, DrugService, Messages, WindowRef],
+  providers: [AuthService, AuthGuardService, TokenStorage, AnimalsService, DrugService, Messages, WindowRef, NotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Drug } from '../../../../models/drug.model';
-import { DrugService } from '../../../../services/drug.service';
+import { DrugService } from '../../../../services/drugs/drug.service';
 import { Messages } from '../../../../messages/messages';
 import { WindowRef } from '../../../../WindowRef';
 

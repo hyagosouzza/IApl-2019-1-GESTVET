@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorage } from './token.storage';
-import { NotifyService } from './notify/notify.service';
 
 @Injectable()
 export class AuthService {

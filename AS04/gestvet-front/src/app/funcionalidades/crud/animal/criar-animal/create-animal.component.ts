@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../../../models/animal.model';
-import { AnimalsService} from '../../../../services/animals.service';
+import { AnimalsService} from '../../../../services/animals/animals.service';
 import { Messages } from '../../../../messages/messages';
 import { WindowRef } from '../../../../WindowRef';
 
