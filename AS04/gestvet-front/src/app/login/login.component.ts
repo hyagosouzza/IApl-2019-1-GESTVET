@@ -36,19 +36,23 @@ export class LoginComponent {
   }
 
   checkFields() {
-    if(this.username == null || '') {
-      this.notifyService.createNotify('Aviso', this.labels.notifications.loginName, "orange");
+    if (this.username == (null || '' || undefined)) {
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.loginName, "orange");
       return false;
     }
-    if(this.password == null || '') {
-      this.notifyService.createNotify('Aviso', this.labels.notifications.loginPassword, "orange");
+    if (this.password == (null || '' || undefined)) {
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.loginPassword, "orange");
+      return false;
+    }
+    if (this.password.length < 6) {
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.passLess, "orange");
       return false;
     }
     return true;
   }
 
   login(): void {
-    if(!this.checkFields) {
+    if (!this.checkFields()) {
       return;
     }
     this.checkFields();
@@ -56,9 +60,24 @@ export class LoginComponent {
       data => {
         this.token.saveToken((data as token).accessToken);
         this.router.navigate(['user']);
-        this.notifyService.createNotify('Sucesso', this.labels.notifications.loginSucess, "green");
+        this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.loginSucess, "green");
       }
-    );
+    ).catch(err => {
+      this.loginErrors(err);
+    });
+  }
+
+  loginErrors(err) {
+    console.log(err);
+    switch (err.status) {
+      case 401:
+        this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.userOrPass, 'orange');
+        break;
+
+      default:
+        this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.defaultLoginError, 'orange');
+        break;
+    }
   }
 
   selectLanguage() {

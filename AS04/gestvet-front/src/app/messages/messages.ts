@@ -67,7 +67,12 @@ export class Messages {
                 loginSucess: 'Autenticação realizada',
                 logout: 'Seção encerrada',
                 loginName: 'Preencha o campo usuário',
-                loginPassword: 'Preencha o campo senha'
+                loginPassword: 'Preencha o campo senha',
+                warning: 'Aviso',
+                success: 'Sucesso',
+                defaultLoginError: 'Ocorreu um erro ao tentar realizar o login',
+                userOrPass: 'Usuário ou senha incorretos',
+                passLess: 'Senha deve ter pelo menos 6 dígitos'
             }
         },
         en:{
@@ -137,7 +142,12 @@ export class Messages {
                 loginSucess: 'Authentication performed',
                 logout: 'Section closed',
                 loginName: 'Fill in the user field',
-                loginPassword: 'Fill in the password field'
+                loginPassword: 'Fill in the password field',
+                warning: 'Warning',
+                success: 'Success',
+                defaultLoginError: 'There was an error while trying to login',
+                userOrPass: 'Incorrect username or password',
+                passLess: 'Password must be at least 6 digits'
             }
         },
         es:{
@@ -207,7 +217,12 @@ export class Messages {
                 loginSucess: 'Autenticación realizada',
                 logout: 'Sección cerrada',
                 loginName: 'Rellene el campo de usuario',
-                loginPassword: 'Rellene el campo contraseña'
+                loginPassword: 'Rellene el campo contraseña',
+                warning: 'Advertencia',
+                success: 'Éxito',
+                defaultLoginError: 'Se produjo un error al intentar iniciar sesión',
+                userOrPass: 'Usuario o contraseña incorrectos',
+                passLess: 'Contraseña debe tener al menos 6 dígitos'
             }
         }
     }
