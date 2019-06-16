@@ -7,21 +7,11 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">{{ labels.user?.titleAnimal }}</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="btn dropdown-item" routerLink="/user/adicionar-animal">{{ labels.user?.actionRegisterAnimal }}</a>
-          <a class="btn dropdown-item" routerLink="/user/animal">{{ labels.user?.actionSeeAnimal }}</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/animal">{{ labels.user?.titleAnimal }}</a>
       </li>
-      <li class="nav-item active dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">{{ labels.user?.titleDrug }}</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="btn dropdown-item" routerLink="/user/adicionar-medicamento">{{ labels.user.actionRegisterDrug }}</a>
-          <a class="btn dropdown-item" routerLink="/user/medicamento">{{ labels.user?.actionSeeDrug }}</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/drug">{{ labels.user?.titleDrug }}</a>
       </li>
       <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"

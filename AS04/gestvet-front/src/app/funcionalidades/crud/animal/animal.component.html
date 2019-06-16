@@ -1,7 +1,7 @@
 <app-user></app-user>
 <div>
   <h2>{{ labels.animal?.title }}</h2>
-  <button id="createAnimal" type="button" class="btn btn-success" data-toggle="modal"
+  <button id="create" type="button" class="btn btn-success" data-toggle="modal"
     data-target="#exampleModal">{{ labels.animal?.titleRegister }}</button>
   <table class="table table-striped">
     <thead>
@@ -38,7 +38,7 @@
   </table>
 </div>
 
-<!-- Modal -->
+<!-- See Animal -->
 <div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="modalViewTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Update Animal -->
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -75,44 +75,40 @@
       <div class="modal-body">
         <div *ngIf="findOneById != null" class="modal-body">
           <p><b>{{ labels.animal?.tableId }}:</b> {{findOneById.id}}</p>
-          <p><b>{{ labels.animal?.tableName }}:</b> {{findOneById.name}}</p>
-          <p><b>{{ labels.animal?.tableAge }}:</b> {{findOneById.age}}</p>
-          <p><b>{{ labels.animal?.tableSpecies }}:</b> {{findOneById.species}}</p>
-          <p><b>{{ labels.animal?.tableBreed }}:</b> {{findOneById.breed}}</p>
         </div>
         <hr>
         <h3 align="center">{{ labels.actions?.edit }}</h3>
         <div>
-          <form *ngIf="animalUpdate">
+          <form>
             <div class="row">
 
-              <div class="col-4">
+              <div class="col-6">
+                <label for="name">{{ labels.animal?.tableName }}:</label>
+                <input [(ngModel)]="updateAnimal.name" placeholder="Name" name="name" class="form-control" id="name"
+                  required>
+              </div>
+
+              <div class="col-6">
                 <label for="age">{{ labels.animal?.tableAge }}:</label>
-                <input [(ngModel)]="animalUpdate.age" placeholder="Age" name="age" class="form-control" id="age"
+                <input [(ngModel)]="updateAnimal.age" placeholder="Age" name="age" class="form-control" id="age"
                   required="required">
               </div>
 
               <div class="col-6">
-                <label for="name">{{ labels.animal?.tableName }}:</label>
-                <input [(ngModel)]="animalUpdate.name" placeholder="Name" name="name" class="form-control" id="name"
-                  required>
-              </div>
-
-              <div class="col-4">
                 <label for="species">{{ labels.animal?.tableSpecies }}:</label>
-                <input [(ngModel)]="animalUpdate.species" placeholder="Species" name="species" class="form-control"
+                <input [(ngModel)]="updateAnimal.species" placeholder="Species" name="species" class="form-control"
                   id="species" required>
               </div>
 
-              <div class="col-4">
+              <div class="col-6">
                 <label for="breed">{{ labels.animal?.tableBreed }}:</label>
-                <input [(ngModel)]="animalUpdate.breed" placeholder="Breed" name="breed" class="form-control" id="breed"
+                <input [(ngModel)]="updateAnimal.breed" placeholder="Breed" name="breed" class="form-control" id="breed"
                   required>
               </div>
 
             </div>
             <br>
-            <button class="btn btn-success" (click)="updateAnimal()">{{ labels.actions?.edit }}</button>
+            <button class="btn btn-success" (click)="putAnimal()">{{ labels.actions?.edit }}</button>
           </form>
         </div>
       </div>
@@ -123,7 +119,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Create Animal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -139,15 +135,15 @@
           <div class="row">
 
             <div class="col-6">
-              <label for="age">{{ labels.animal?.tableAge }}:</label>
-              <input type="number" [(ngModel)]="animal.age" placeholder="Age" name="age" class="form-control" id="age"
-                required="required">
-            </div>
-
-            <div class="col-6">
               <label for="name">{{ labels.animal?.tableName }}:</label>
               <input type="text" [(ngModel)]="animal.name" placeholder="Name" name="name" class="form-control" id="name"
                 required>
+            </div>
+
+            <div class="col-6">
+              <label for="age">{{ labels.animal?.tableAge }}:</label>
+              <input type="number" [(ngModel)]="animal.age" placeholder="Age" name="age" class="form-control" id="age"
+                required="required">
             </div>
 
             <div class="col-6">
@@ -170,7 +166,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ labels.actions?.cancel }}</button>
         <button type="button" class="btn btn-success"
-          (click)="createAnimal(formAnimal)">{{ labels.actions?.register }}</button>
+          (click)="createAnimal()">{{ labels.actions?.register }}</button>
       </div>
     </div>
   </div>

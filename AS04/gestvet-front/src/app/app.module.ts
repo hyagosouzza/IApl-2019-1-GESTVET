@@ -11,11 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenStorage } from './services/token.storage';
 import { AnimalsService } from './services/animals/animals.service';
-import { CreateAnimalComponent } from './funcionalidades/crud/animal/criar-animal/create-animal.component';
 import { AnimalComponent } from './funcionalidades/crud/animal/animal.component';
 import { DrugComponent } from './funcionalidades/crud/drug/drug.component';
 import { DrugService } from './services/drugs/drug.service';
-import { CreateDrugComponent } from './funcionalidades/crud/drug/create-drug/create-drug.component';
 import { NotifyService } from './services/notify/notify.service';
 import { Messages } from '../app/messages/messages';
 import { WindowRef } from './WindowRef';
@@ -35,20 +33,12 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'user/put-animal',
-    component: CreateAnimalComponent
-  },
-  {
     path: 'user/animal',
     component: AnimalComponent
   },
   {
     path: 'user/drug',
     component: DrugComponent
-  },
-  {
-    path: 'user/put-drug',
-    component: CreateDrugComponent
   },
   {
     path: '**',
@@ -61,10 +51,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     UserComponent,
-    CreateAnimalComponent,
     AnimalComponent,
-    DrugComponent,
-    CreateDrugComponent
+    DrugComponent
   ],
   imports: [
     BrowserModule,

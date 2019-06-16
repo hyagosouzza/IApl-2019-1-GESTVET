@@ -53,6 +53,23 @@ export class AnimalComponent implements OnInit {
       });
   }
 
+  createAnimal(): void {
+    if(this.animal.age == null ||
+      this.animal.name == (null || '') ||
+      this.animal.breed == (null || '') ||
+      this.animal.species == (null || '') ) {
+      alert('Todos os campos devem ser preenchidos');
+      return;
+    }
+
+    this.animalService.createAnimal(this.animal)
+      .subscribe(data => {
+        alert("Animal cadastrado com sucesso.");
+        (document.getElementById("formAnimal") as HTMLFormElement).reset();
+      });
+
+  }
+
   selectLanguage() {
     var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
     if (country === 'BR'){

@@ -19,9 +19,15 @@ public class DrugController {
         return drugService.create(drug);
     }
 
-    @GetMapping(path = {"/{id}"})
-    public Drug update(@PathVariable("id") Long id, @RequestBody Drug drug){
+    @PutMapping(path = {"/{id}"})
+    public Drug upgrade(@PathVariable("id") Long id, @RequestBody Drug drug) {
+        drug.setId(id);
         return drugService.update(drug);
+    }
+
+    @GetMapping(path = {"/{id}"})
+    public Drug findById(@PathVariable("id") Long id) {
+        return drugService.findById(id);
     }
 
     @DeleteMapping(path = {"/{id}"})

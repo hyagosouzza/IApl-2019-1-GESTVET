@@ -32,6 +32,22 @@ export class DrugComponent implements OnInit {
     );
   }
 
+  createDrug(): void {
+    if (this.drug.name === (null) ||
+      this.drug.price === (null) ||
+      this.drug.dosage === (null) ||
+      this.drug.quantity === (null) ) {
+      alert('Todos os campos devem ser preenchidos');
+      return;
+    }
+
+    this.drugService.createDrug(this.drug)
+      .subscribe(data => {
+        alert('Medicamento cadastrado com sucesso.');
+      });
+
+  }
+
   putDrug(): void {
     this.drugService.putDrug(this.updateDrug).subscribe(
       data => {

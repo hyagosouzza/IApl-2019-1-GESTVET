@@ -1,24 +1,25 @@
 <app-user></app-user>
 <div>
-  <h2>{{ labels.drug.title }}</h2>
-
+  <h2>{{ labels.drug?.title }}</h2>
+  <button id="create" type="button" class="btn btn-success" data-toggle="modal"
+    data-target="#exampleModal">{{ labels.drug?.titleRegister }}</button>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>{{ labels.drug.tableId }}</th>
-        <th>{{ labels.drug.tableName }}</th>
-        <th>{{ labels.drug.tablePrice }}</th>
-        <th>{{ labels.drug.tableDosage }}</th>
-        <th>{{ labels.drug.tableQuantity }}</th>
+        <th>{{ labels.drug?.tableId }}</th>
+        <th>{{ labels.drug?.tableName }}</th>
+        <th>{{ labels.drug?.tablePrice }}</th>
+        <th>{{ labels.drug?.tableDosage }}</th>
+        <th>{{ labels.drug?.tableQuantity }}</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let drug of drugs">
-        <td>{{drug.id}}</td>
-        <td>{{drug.name}}</td>
-        <td>{{drug.price}}</td>
-        <td>{{drug.dosage}}</td>
-        <td>{{drug.quantity}}</td>
+        <td>{{drug?.id}}</td>
+        <td>{{drug?.name}}</td>
+        <td>{{drug?.price}}</td>
+        <td>{{drug?.dosage}}</td>
+        <td>{{drug?.quantity}}</td>
         <td style="width: 45%"><button class="btn btn-info" (click)="findOne(drug)" data-toggle="modal"
             data-target="#modalView">
             {{ labels.actions.see }}
@@ -26,32 +27,32 @@
 
           <button type="button" class="btn btn-primary" (click)="findOne(drug)" data-toggle="modal"
             data-target="#modalEdit">
-            Editar
+            {{ labels.actions.edit }}
           </button>
 
-          <button class="btn btn-danger" (click)="deleteDrug(drug)"> {{ labels.actions.delete }}</button>
+          <button class="btn btn-danger" (click)="deleteDrug(drug)"> {{ labels.actions.delet }}</button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<!-- Modal -->
+<!-- See Drug -->
 <div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="modalViewTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalViewTitle">{{ labels.drug.titleModal }}</h5>
+        <h5 class="modal-title" id="modalViewTitle">{{ labels.drug?.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div *ngIf="findOneById != null" class="modal-body">
-        <p><b>{{ labels.drug.tableId }}:</b> {{findOneById.id}}</p>
-        <p><b>{{ labels.drug.tableName }}:</b> {{findOneById.name}}</p>
-        <p><b>{{ labels.drug.tablePrice }}:</b> {{findOneById.price}}</p>
-        <p><b>{{ labels.drug.tableDosage }}:</b> {{findOneById.dosage}}</p>
-        <p><b>{{ labels.drug.tableQuantity }}:</b> {{findOneById.quantity}}</p>
+        <p><b>{{ labels.drug?.tableId }}:</b> {{findOneById.id}}</p>
+        <p><b>{{ labels.drug?.tableName }}:</b> {{findOneById?.name}}</p>
+        <p><b>{{ labels.drug?.tablePrice }}:</b> {{findOneById?.price}}</p>
+        <p><b>{{ labels.drug?.tableDosage }}:</b> {{findOneById?.dosage}}</p>
+        <p><b>{{ labels.drug?.tableQuantity }}:</b> {{findOneById?.quantity}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions.leave }}</button>
@@ -60,61 +61,110 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Update Drug -->
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalEditTitle">{{ labels.drug.titleModal }}</h5>
+        <h5 class="modal-title" id="modalEditTitle">{{ labels.drug?.titleModal }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div *ngIf="findOneById != null" class="modal-body">
-          <p><b>{{ labels.drug.tableId }}:</b> {{findOneById.id}}</p>
-          <p><b>{{ labels.drug.tableName }}:</b> {{findOneById.name}}</p>
-          <p><b>{{ labels.drug.tablePrice }}:</b> {{findOneById.price}}</p>
-          <p><b>{{ labels.drug.tableDosage }}:</b> {{findOneById.dosage}}</p>
-          <p><b>{{ labels.drug.tableQuantity }}:</b> {{findOneById.quantity}}</p>
+        <div class="modal-body">
+          <p><b>{{ labels.drug?.tableId }}:</b> {{findOneById?.id}}</p>
+
         </div>
         <hr>
-        <h3 align="center">{{ labels.actions.edit }}</h3>
+        <h3 align="center">{{ labels.actions?.edit }}</h3>
         <div>
           <form>
             <div class="row">
 
-              <div class="col-4">
-                <label for="name">{{ labels.drug.tableName }}:</label>
+              <div class="col-6">
+                <label for="name">{{ labels.drug?.tableName }}:</label>
                 <input [(ngModel)]="updateDrug.name" placeholder="Name" name="name" class="form-control" id="name"
                   required="required">
               </div>
 
               <div class="col-6">
-                <label for="price">{{ labels.drug.tablePrice }}:</label>
+                <label for="price">{{ labels.drug?.tablePrice }}:</label>
                 <input [(ngModel)]="updateDrug.price" placeholder="Price" name="price" class="form-control" id="price"
                   required>
               </div>
 
-              <div class="col-4">
-                <label for="dosage">{{ labels.drug.tableDosage }}:</label>
+              <div class="col-6">
+                <label for="dosage">{{ labels.drug?.tableDosage }}:</label>
                 <input [(ngModel)]="updateDrug.dosage" placeholder="Dosage" name="dosage" class="form-control"
                   id="dosage" required>
               </div>
 
-              <div class="col-4">
-                <label for="quantity">{{ labels.drug.tableQuantity }}:</label>
+              <div class="col-6">
+                <label for="quantity">{{ labels.drug?.tableQuantity }}:</label>
                 <input [(ngModel)]="updateDrug.quantity" placeholder="Quantity" name="quantity" class="form-control"
                   id="quantity" required>
               </div>
             </div>
             <br>
-            <button class="btn btn-success" (click)="putDrug()">{{ labels.actions.edit }}</button>
+            <button class="btn btn-success" (click)="putDrug()">{{ labels.actions?.edit }}</button>
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ table.actions.leave }}</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ labels.actions?.leave }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Drug -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ labels.drug?.titleRegister }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+
+            <div class="col-6">
+              <label for="name">{{ labels.drug?.tableName }}:</label>
+              <input type="text" [(ngModel)]="drug.name" placeholder="Name" name="name" class="form-control" id="name"
+                required="required">
+            </div>
+
+            <div class="col-6">
+              <label for="price">{{ labels.drug?.tablePrice }}:</label>
+              <input type="number" [(ngModel)]="drug.price" placeholder="Price" name="price" class="form-control"
+                id="price" required>
+            </div>
+
+            <div class="col-6">
+              <label for="dosage">{{ labels.drug?.tableDosage }}:</label>
+              <input type="text" [(ngModel)]="drug.dosage" placeholder="Dosage" name="dosage" class="form-control"
+                id="dosage" required>
+            </div>
+
+            <div class="col-6">
+              <label for="quantity">{{ labels.drug?.tableQuantity }}:</label>
+              <input type="number" [(ngModel)]="drug.quantity" placeholder="Quantity" name="quantity"
+                class="form-control" id="quantity" required>
+            </div>
+
+          </div>
+          <br>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ labels.actions?.cancel }}</button>
+        <button type="button" class="btn btn-success" (click)="createDrug()">{{ labels.actions?.register }}</button>
       </div>
     </div>
   </div>
