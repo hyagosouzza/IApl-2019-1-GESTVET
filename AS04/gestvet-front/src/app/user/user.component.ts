@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
 
   animals: Array<Animal> = new Array();
   user: any;
-  labels: {}
+  labels: any;
 
   constructor(private token: TokenStorage, private animalsService: AnimalsService, private authService: AuthService,
     private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService, private router: Router) {
@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
   logout() {
     this.token.signOut();
     this.router.navigate(['login']);
-    this.notifyService.createNotify("Sucesso", "Sessão Encerrada!", "green");
+    this.notifyService.createNotify("Sucesso", this.labels.notifications.logout, "green");
   }
 
   selectLanguage() {

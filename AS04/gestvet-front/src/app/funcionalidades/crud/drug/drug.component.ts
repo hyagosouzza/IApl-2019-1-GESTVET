@@ -71,7 +71,7 @@ export class DrugComponent implements OnInit {
 
     this.drugService.createDrug(this.drug)
       .subscribe(data => {
-        alert('Medicamento cadastrado com sucesso.');
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.createDrug, "green");
         this.initData();
         $('.modal').modal('hide');
       });
@@ -81,7 +81,7 @@ export class DrugComponent implements OnInit {
   putDrug(): void {
     this.drugService.putDrug(this.updateDrug).subscribe(
       data => {
-        alert('Medicamento editado');
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.editDrug, "green");
         this.initData();
         $('.modal').modal('hide');
       }
@@ -90,7 +90,10 @@ export class DrugComponent implements OnInit {
 
   deleteDrug(drug: Drug): void {
     this.drugService.deleteDrug(drug).subscribe(
-      data => this.drugs = this.drugs.filter(u => u !== drug)
+      data => {
+        this.drugs = this.drugs.filter(u => u !== drug);
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.deleteDrug, "green");
+      }
     );
   }
 

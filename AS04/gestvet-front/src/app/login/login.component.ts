@@ -19,7 +19,7 @@ interface token {
 
 export class LoginComponent {
 
-  labels = {};
+  labels: any;
 
   constructor(private router: Router, private authService: AuthService, private token: TokenStorage,
     private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService) {
@@ -35,12 +35,28 @@ export class LoginComponent {
     this.selectLanguage();
   }
 
+  checkFields() {
+    if(this.username == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.loginName, "orange");
+      return false;
+    }
+    if(this.password == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.loginPassword, "orange");
+      return false;
+    }
+    return true;
+  }
+
   login(): void {
+    if(!this.checkFields) {
+      return;
+    }
+    this.checkFields();
     this.authService.attemptAuth(this.username, this.password).toPromise().then(
       data => {
         this.token.saveToken((data as token).accessToken);
         this.router.navigate(['user']);
-        this.notifyService.createNotify('Sucesso', 'Autenticação realizada!', "green");
+        this.notifyService.createNotify('Sucesso', this.labels.notifications.loginSucess, "green");
       }
     );
   }

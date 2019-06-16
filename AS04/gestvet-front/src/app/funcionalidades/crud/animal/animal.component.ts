@@ -46,7 +46,7 @@ export class AnimalComponent implements OnInit {
   putAnimal(): void {
     this.animalService.putAnimal(this.updateAnimal)
       .subscribe(data => {
-        alert('Animal Editado!');
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.editAnimal, "green");
         this.initData();
         $('.modal').modal('hide');
       });
@@ -57,6 +57,7 @@ export class AnimalComponent implements OnInit {
     this.animalService.deleteAnimal(animal)
       .subscribe(data => {
         this.animals = this.animals.filter(u => u !== animal);
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.deleteAnimal, "green");
       });
   }
 
@@ -89,7 +90,7 @@ export class AnimalComponent implements OnInit {
 
     this.animalService.createAnimal(this.animal)
       .subscribe(data => {
-        alert("Animal cadastrado com sucesso.");
+        this.notifyService.createNotify("Sucesso", this.labels.notifications.createAnimal, "green");
         (document.getElementById("formAnimal") as HTMLFormElement).reset();
         this.initData();
         $('.modal').modal('hide');
