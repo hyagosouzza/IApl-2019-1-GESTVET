@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalsService} from '../../../services/animals.service';
 import { Animal} from '../../../models/animal.model';
+import { Messages } from '../../../messages/messages';
+import { WindowRef } from '../../../WindowRef';
 
 @Component({
   selector: 'app-animal',
@@ -9,15 +11,17 @@ import { Animal} from '../../../models/animal.model';
 })
 export class AnimalComponent implements OnInit {
 
+  labels = {};
   animals: Animal[];
   animal: Animal = new Animal();
   updateAnimal: Animal = new Animal();
   findOneById: any;
 
-  constructor(private animalService: AnimalsService) { }
+  constructor(private animalService: AnimalsService, private messages: Messages, private winRef: WindowRef) { }
 
   ngOnInit() {
-    this.animalService.getAnimais()
+    this.selectLanguage();
+    this.animalService.getAnimals()
       .subscribe(data => {
         this.animals = data;
     });
@@ -41,12 +45,23 @@ export class AnimalComponent implements OnInit {
       });
   }
 
-  deletarAnimal(animal: Animal): void {
+  deleteAnimal(animal: Animal): void {
 
     this.animalService.deleteAnimal(animal)
       .subscribe(data => {
         this.animals = this.animals.filter(u => u !== animal);
       });
+  }
+
+  selectLanguage() {
+    var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
+    if (country === 'BR'){
+      this.labels = this.messages.messages.pt;
+    } else if (country === 'US'){
+      this.labels = this.messages.messages.en;
+    } else if (country === 'ES'){
+      this.labels = this.messages.messages.es;
+    }
   }
 
 }

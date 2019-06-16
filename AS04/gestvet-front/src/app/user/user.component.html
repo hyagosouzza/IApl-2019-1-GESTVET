@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="/user">GestVet</a>
+  <a class="navbar-brand" href="/user">{{ labels.general.title }}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,18 +9,26 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Animal</a>
+          aria-expanded="false">{{ labels.user.titleAnimal }}</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="btn dropdown-item" routerLink="/user/adicionar-animal">Cadastrar Animal</a>
-          <a class="btn dropdown-item" routerLink="/user/animal">Ver Animais</a>
+          <a class="btn dropdown-item" routerLink="/user/adicionar-animal">{{ labels.user.actionRegisterAnimal }}</a>
+          <a class="btn dropdown-item" routerLink="/user/animal">{{ labels.user.actionSeeAnimal }}</a>
         </div>
       </li>
       <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Medicamento</a>
+          aria-expanded="false">{{ labels.user.titleDrug }}</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="btn dropdown-item" routerLink="/user/adicionar-medicamento">Cadastrar Medicamento</a>
-          <a class="btn dropdown-item" routerLink="/user/medicamento">Ver Medicamentos</a>
+          <a class="btn dropdown-item" routerLink="/user/adicionar-medicamento">{{ labels.user.actionRegisterDrug }}</a>
+          <a class="btn dropdown-item" routerLink="/user/medicamento">{{ labels.user.actionSeeDrug }}</a>
+        </div>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">{{ labels.user.titleVet }}</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="btn dropdown-item" routerLink="">{{ labels.user.actionRegisterVet }}</a>
+          <a class="btn dropdown-item" routerLink="">{{ labels.user.actionSeeVet }}</a>
         </div>
       </li>
     </ul>
@@ -32,7 +40,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">{{user?.username}}</a>
               <a class="dropdown-item" href="#">{{user?.email}}</a>
-              <a style="background-color: crimson; color: white;" class="dropdown-item" href="#" (click)="logout()">Log Out</a>
+              <a style="background-color: crimson; color: white;" class="dropdown-item" href="#" (click)="logout()">{{ labels.actions.logout }}</a>
             </div>
           </div>
     </form>

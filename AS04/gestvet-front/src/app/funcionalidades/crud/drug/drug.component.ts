@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Drug} from '../../../models/drug.model';
-import {DrugService} from '../../../services/drug.service';
+import { Drug } from '../../../models/drug.model';
+import { DrugService } from '../../../services/drug.service';
+import { Messages } from '../../../messages/messages';
+import { WindowRef } from '../../../WindowRef';
 
 @Component({
   selector: 'app-drug',
@@ -13,13 +15,15 @@ export class DrugComponent implements OnInit {
   drug: Drug = new Drug();
   updateDrug: Drug = new Drug();
   findOneById: any;
+  labels: {};
 
-  constructor(private drugService: DrugService) { }
+  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef) { }
 
   ngOnInit() {
     this.drugService.getDrugs().subscribe(
       data => this.drugs = data
     );
+    this.selectLanguage();
   }
 
   findOne(drug: Drug): void {
@@ -41,5 +45,16 @@ export class DrugComponent implements OnInit {
     this.drugService.deleteDrug(drug).subscribe(
       data => this.drugs = this.drugs.filter(u => u !== drug)
     );
+  }
+
+  selectLanguage() {
+    var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
+    if (country === 'BR'){
+      this.labels = this.messages.messages.pt;
+    } else if (country === 'US'){
+      this.labels = this.messages.messages.en;
+    } else if (country === 'ES'){
+      this.labels = this.messages.messages.es;
+    }
   }
 }

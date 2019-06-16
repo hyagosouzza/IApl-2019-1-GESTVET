@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Drug} from '../../../../models/drug.model';
-import {DrugService} from '../../../../services/drug.service';
+import { Drug } from '../../../../models/drug.model';
+import { DrugService } from '../../../../services/drug.service';
+import { Messages } from '../../../../messages/messages';
+import { WindowRef } from '../../../../WindowRef';
 
 @Component({
   selector: 'app-create-drug',
@@ -10,10 +12,12 @@ import {DrugService} from '../../../../services/drug.service';
 export class CreateDrugComponent implements OnInit {
 
   drug: Drug = new Drug();
+  labels: {};
 
-  constructor(private drugService: DrugService) { }
+  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef) { }
 
   ngOnInit() {
+    this.selectLanguage();
   }
 
   createDrug(): void {
@@ -30,6 +34,17 @@ export class CreateDrugComponent implements OnInit {
         alert('Medicamento cadastrado com sucesso.');
       });
 
+  }
+
+  selectLanguage() {
+    var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
+    if (country === 'BR'){
+      this.labels = this.messages.messages.pt;
+    } else if (country === 'US'){
+      this.labels = this.messages.messages.en;
+    } else if (country === 'ES'){
+      this.labels = this.messages.messages.es;
+    }
   }
 
 }

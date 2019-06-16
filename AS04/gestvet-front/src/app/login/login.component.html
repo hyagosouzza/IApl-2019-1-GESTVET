@@ -1,17 +1,17 @@
 <div class="text-center box">
   <form class="form-signin bg-dark">
     <h1 class="h3 mb-3 font-weight-normal wite">GestVet</h1>
-    <label for="inputEmail" class="sr-only">Usuário</label>
+    <label for="inputEmail" class="sr-only">{{ labels.login.user }}</label>
     <input [(ngModel)]="username" type="username" type="email" id="inputEmail" class="form-control"
-      placeholder="Usuário" name="username" required autofocus>
-    <label for="inputPassword" class="sr-only">Senha</label>
-    <input [(ngModel)]="password" type="password" id="inputPassword" class="form-control" placeholder="Senha"
+      placeholder="{{labels.login.user}}" name="username" required autofocus>
+    <label for="inputPassword" class="sr-only">{{ labels.login.user }}</label>
+    <input [(ngModel)]="password" type="password" id="inputPassword" class="form-control" placeholder="{{labels.login.password}}"
       name="password" required>
     <!-- <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div> -->
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">{{ labels.login.signIn }}</button>
   </form>
 </div>
