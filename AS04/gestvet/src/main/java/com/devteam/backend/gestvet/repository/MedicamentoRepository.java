@@ -1,20 +1,20 @@
 package com.devteam.backend.gestvet.repository;
 
-import com.devteam.backend.gestvet.model.Medicamento;
+import com.devteam.backend.gestvet.model.Drug;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-public interface MedicamentoRepository  extends Repository<Medicamento, Integer> {
+public interface MedicamentoRepository  extends Repository<Drug, Integer> {
 
-    Medicamento save(Medicamento medicamento);
+    Drug save(Drug drug);
 
-    List<Medicamento> findAll();
+    List<Drug> findAll();
 
-    Medicamento findById(Long id);
+    Drug findById(Long id);
 
-    Medicamento findByNome(String nome);
+    Drug findByNome(String nome);
 
-    void delete(Medicamento medicamento);
+    void delete(Drug drug);
 
 }

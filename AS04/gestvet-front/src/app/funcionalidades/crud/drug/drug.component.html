@@ -14,23 +14,23 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let medicamento of medicamentos">
-      <td>{{medicamento.id}}</td>
-      <td>{{medicamento.nome}}</td>
-      <td>{{medicamento.preco}}</td>
-      <td>{{medicamento.dosagem}}</td>
-      <td>{{medicamento.quantidade}}</td>
-      <td style="width: 45%"><button class="btn btn-info" (click)="findOne(medicamento)" data-toggle="modal"
+    <tr *ngFor="let drug of drugs">
+      <td>{{drug.id}}</td>
+      <td>{{drug.name}}</td>
+      <td>{{drug.price}}</td>
+      <td>{{drug.dosage}}</td>
+      <td>{{drug.quantity}}</td>
+      <td style="width: 45%"><button class="btn btn-info" (click)="findOne(drug)" data-toggle="modal"
                                      data-target="#modalVer">
         Ver
       </button>
 
-        <button type="button" class="btn btn-primary" (click)="findOne(medicamento)"
+        <button type="button" class="btn btn-primary" (click)="findOne(drug)"
                 data-toggle="modal" data-target="#modalEditar">
           Editar
         </button>
 
-        <button class="btn btn-danger" (click)="deletarMedicamento(medicamento)"> Deletar</button>
+        <button class="btn btn-danger" (click)="deleteDrug(drug)"> Deletar</button>
       </td>
     </tr>
     </tbody>
@@ -49,10 +49,10 @@
       </div>
       <div *ngIf="findOneById != null" class="modal-body">
         <p><b>ID:</b> {{findOneById.id}}</p>
-        <p><b>Nome:</b> {{findOneById.nome}}</p>
-        <p><b>Preço:</b> {{findOneById.preco}}</p>
-        <p><b>Dosagem:</b> {{findOneById.dosagem}}</p>
-        <p><b>Quantidade:</b> {{findOneById.quantidade}}</p>
+        <p><b>Nome:</b> {{findOneById.name}}</p>
+        <p><b>Preço:</b> {{findOneById.price}}</p>
+        <p><b>Dosagem:</b> {{findOneById.dosage}}</p>
+        <p><b>Quantidade:</b> {{findOneById.quantity}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
@@ -74,10 +74,10 @@
       <div class="modal-body">
         <div *ngIf="findOneById != null" class="modal-body">
           <p><b>ID:</b> {{findOneById.id}}</p>
-          <p><b>Nome:</b> {{findOneById.nome}}</p>
-          <p><b>Preço:</b> {{findOneById.preco}}</p>
-          <p><b>Dosagem:</b> {{findOneById.dosagem}}</p>
-          <p><b>Quantidade:</b> {{findOneById.quantidade}}</p>
+          <p><b>Nome:</b> {{findOneById.name}}</p>
+          <p><b>Preço:</b> {{findOneById.price}}</p>
+          <p><b>Dosagem:</b> {{findOneById.dosage}}</p>
+          <p><b>Quantidade:</b> {{findOneById.quantity}}</p>
         </div>
         <hr>
         <h3 align="center">Editar</h3>
@@ -86,31 +86,31 @@
             <div class="row">
 
               <div class="col-4">
-                <label for="nome">Nome:</label>
-                <input [(ngModel)]="medicamentoUpdate.nome" placeholder="Nome" name="nome" class="form-control"
-                       id="nome" required="required">
+                <label for="name">Nome:</label>
+                <input [(ngModel)]="updateDrug.name" placeholder="Name" name="name" class="form-control"
+                       id="name" required="required">
               </div>
 
               <div class="col-6">
-                <label for="preco">Preço:</label>
-                <input [(ngModel)]="medicamentoUpdate.preco" placeholder="Preço" name="preco" class="form-control"
-                       id="preco" required>
+                <label for="price">Preço:</label>
+                <input [(ngModel)]="updateDrug.price" placeholder="Price" name="price" class="form-control"
+                       id="price" required>
               </div>
 
               <div class="col-4">
-                <label for="dosagem">Dosagem:</label>
-                <input [(ngModel)]="medicamentoUpdate.dosagem" placeholder="Dosagem" name="dosagem" class="form-control"
-                       id="dosagem" required>
+                <label for="dosage">Dosagem:</label>
+                <input [(ngModel)]="updateDrug.dosage" placeholder="Dosage" name="dosage" class="form-control"
+                       id="dosage" required>
               </div>
 
               <div class="col-4">
-                <label for="dosagem">Quantidade:</label>
-                <input [(ngModel)]="medicamentoUpdate.quantidade" placeholder="Quantidade" name="quantidade" class="form-control"
-                       id="quantidade" required>
+                <label for="quantity">Quantidade:</label>
+                <input [(ngModel)]="updateDrug.quantity" placeholder="Quantity" name="quantity" class="form-control"
+                       id="quantity" required>
               </div>
             </div>
             <br>
-            <button class="btn btn-success" (click)="updateMedicamento()">Editar</button>
+            <button class="btn btn-success" (click)="putDrug()">Editar</button>
           </form>
         </div>
       </div>

@@ -12,13 +12,13 @@ public class Animal {
     private Long id;
 
     @Column
-    private String nome;
+    private String name;
     @Column
-    private String raca;
+    private String breed;
     @Column
-    private int idade;
+    private int age;
     @Column
-    private String tipo;
+    private String species;
 
     public Long getId() {
         return id;
@@ -28,35 +28,35 @@ public class Animal {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRaca() {
-        return raca;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setRaca(String raca) {
-        this.raca = raca;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 
-    public int getIdade() {
-        return idade;
+    public int getAge() {
+        return age;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getSpecies() {
+        return species;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setSpecies(String species) {
+        this.species = species;
     }
 }

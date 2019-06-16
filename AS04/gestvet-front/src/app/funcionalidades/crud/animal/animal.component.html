@@ -14,12 +14,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let animal of animais">
+    <tr *ngFor="let animal of animals">
       <td>{{animal.id}}</td>
-      <td>{{animal.nome}}</td>
-      <td>{{animal.idade}}</td>
-      <td>{{animal.tipo}}</td>
-      <td>{{animal.raca}}</td>
+      <td>{{animal.name}}</td>
+      <td>{{animal.age}}</td>
+      <td>{{animal.species}}</td>
+      <td>{{animal.breed}}</td>
 
       <td style="width: 45%"><button class="btn btn-info" (click)="findOne(animal)" data-toggle="modal"
                                      data-target="#modalVer">
@@ -50,10 +50,10 @@
       </div>
       <div *ngIf="findOneById != null" class="modal-body">
         <p><b>ID:</b> {{findOneById.id}}</p>
-        <p><b>Nome:</b> {{findOneById.nome}}</p>
-        <p><b>idade:</b> {{findOneById.idade}}</p>
-        <p><b>Tipo:</b> {{findOneById.tipo}}</p>
-        <p><b>Raça:</b> {{findOneById.raca}}</p>
+        <p><b>Nome:</b> {{findOneById.name}}</p>
+        <p><b>idade:</b> {{findOneById.age}}</p>
+        <p><b>Tipo:</b> {{findOneById.species}}</p>
+        <p><b>Raça:</b> {{findOneById.breed}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Sair</button>
@@ -75,10 +75,10 @@
       <div class="modal-body">
         <div *ngIf="findOneById != null" class="modal-body">
           <p><b>ID:</b> {{findOneById.id}}</p>
-          <p><b>Nome:</b> {{findOneById.nome}}</p>
-          <p><b>idade:</b> {{findOneById.idade}}</p>
-          <p><b>Tipo:</b> {{findOneById.tipo}}</p>
-          <p><b>Raça:</b> {{findOneById.raca}}</p>
+          <p><b>Nome:</b> {{findOneById.name}}</p>
+          <p><b>idade:</b> {{findOneById.age}}</p>
+          <p><b>Tipo:</b> {{findOneById.species}}</p>
+          <p><b>Raça:</b> {{findOneById.breed}}</p>
         </div>
         <hr>
         <h3 align="center">Editar</h3>
@@ -87,26 +87,26 @@
             <div class="row">
 
               <div class="col-4">
-                <label for="idade">Idade:</label>
-                <input [(ngModel)]="animalUpdate.idade" placeholder="Idade" name="idade" class="form-control"
-                       id="idade" required="required">
+                <label for="age">Idade:</label>
+                <input [(ngModel)]="animalUpdate.age" placeholder="Age" name="age" class="form-control"
+                       id="age" required="required">
               </div>
 
               <div class="col-6">
-                <label for="nome">Nome:</label>
-                <input [(ngModel)]="animalUpdate.nome" placeholder="Nome" name="nome" class="form-control"
-                       id="nome" required>
+                <label for="name">Nome:</label>
+                <input [(ngModel)]="animalUpdate.name" placeholder="Name" name="name" class="form-control"
+                       id="name" required>
               </div>
 
               <div class="col-4">
-                <label for="tipo">Tipo:</label>
-                <input [(ngModel)]="animalUpdate.tipo" placeholder="Tipo" name="tipo" class="form-control"
-                       id="tipo" required>
+                <label for="species">Tipo:</label>
+                <input [(ngModel)]="animalUpdate.species" placeholder="Species" name="species" class="form-control"
+                       id="species" required>
               </div>
 
               <div class="col-4">
-                <label for="raca">Raça:</label>
-                <input [(ngModel)]="animalUpdate.raca" placeholder="Raça" name="raca" class="form-control" id="raca"
+                <label for="breed">Raça:</label>
+                <input [(ngModel)]="animalUpdate.breed" placeholder="Breed" name="breed" class="form-control" id="breed"
                        required>
               </div>
 

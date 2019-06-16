@@ -1,0 +1,37 @@
+<app-user></app-user>
+<div>
+  <h2 class="text-center">Cadastrar Medicamento</h2>
+  <br>
+  <form>
+    <div class="row">
+
+      <div class="col-4">
+        <label for="name">Nome:</label>
+        <input type="text" [(ngModel)]="drug.name" placeholder="Name" name="name" class="form-control"
+               id="name" required="required">
+      </div>
+
+      <div class="col-6">
+        <label for="price">Preço:</label>
+        <input type="number" [(ngModel)]="drug.price" placeholder="Price" name="price" class="form-control"
+               id="price" required>
+      </div>
+
+      <div class="col-4">
+        <label for="dosage">Dosagem:</label>
+        <input type="text" [(ngModel)]="drug.dosage" placeholder="Dosage" name="dosage" class="form-control"
+               id="dosage" required>
+      </div>
+
+      <div class="col-4">
+        <label for="quantity">Quantidade:</label>
+        <input type="number" [(ngModel)]="drug.quantity" placeholder="Quantity" name="quantity" class="form-control" id="quantity"
+               required>
+      </div>
+
+    </div>
+    <br>
+
+    <button class="btn btn-success" (click)="createDrug()">Cadastrar</button>
+  </form>
+</div>

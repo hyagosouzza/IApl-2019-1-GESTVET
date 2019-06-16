@@ -1,21 +1,21 @@
 package com.devteam.backend.gestvet.security.services;
 
-import com.devteam.backend.gestvet.model.Medicamento;
+import com.devteam.backend.gestvet.model.Drug;
 
 import java.util.List;
 
 public interface MedicamentoService {
 
-    Medicamento create(Medicamento medicamento);
+    Drug create(Drug drug);
 
-    Medicamento delete(Long id);
+    Drug delete(Long id);
 
-    List<Medicamento> findAll();
+    List<Drug> findAll();
 
-    Medicamento findById(Long id);
+    Drug findById(Long id);
 
-    Medicamento findByNome(String nome);
+    Drug findByNome(String nome);
 
-    Medicamento update(Medicamento medicamento);
+    Drug update(Drug drug);
 
 }

@@ -10,12 +10,12 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenStorage } from './services/token.storage';
-import { AnimaisService } from './services/animais.service';
-import { CriarAnimalComponent } from './funcionalidades/crud/animal/criar-animal/criar-animal.component';
+import { AnimalsService } from './services/animals.service';
+import { CreateAnimalComponent } from './funcionalidades/crud/animal/criar-animal/create-animal.component';
 import { AnimalComponent } from './funcionalidades/crud/animal/animal.component';
-import { MedicamentoComponent } from './funcionalidades/crud/medicamento/medicamento.component';
-import {MedicamentoService} from './services/medicamento.service';
-import { CriarMedicamentoComponent } from './funcionalidades/crud/medicamento/criar-medicamento/criar-medicamento.component';
+import { DrugComponent } from './funcionalidades/crud/drug/drug.component';
+import { DrugService } from './services/drug.service';
+import { CreateDrugComponent } from './funcionalidades/crud/drug/create-drug/create-drug.component';
 import { NotifyService } from './services/notify/notify.service';
 
 const appRoutes: Routes = [
@@ -33,20 +33,20 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'user/adicionar-animal',
-    component: CriarAnimalComponent
+    path: 'user/put-animal',
+    component: CreateAnimalComponent
   },
   {
     path: 'user/animal',
     component: AnimalComponent
   },
   {
-    path: 'user/medicamento',
-    component: MedicamentoComponent
+    path: 'user/drug',
+    component: DrugComponent
   },
   {
-    path: 'user/adicionar-medicamento',
-    component: CriarMedicamentoComponent
+    path: 'user/put-drug',
+    component: CreateDrugComponent
   },
   {
     path: '**',
@@ -59,10 +59,10 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     UserComponent,
-    CriarAnimalComponent,
+    CreateAnimalComponent,
     AnimalComponent,
-    MedicamentoComponent,
-    CriarMedicamentoComponent
+    DrugComponent,
+    CreateDrugComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuardService, TokenStorage, AnimaisService, MedicamentoService, NotifyService],
+  providers: [AuthService, AuthGuardService, TokenStorage, AnimalsService, DrugService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
