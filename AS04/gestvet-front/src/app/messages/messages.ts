@@ -50,6 +50,12 @@ export class Messages {
                 signIn: 'Logar'
             },
             notifications:{
+                createAnimal: 'Animal criado',
+                createDrug: 'Medicamento criado',
+                editAnimal: 'Animal editado',
+                editDrug: 'Medicamento editado',
+                deleteAnimal: 'Animal deletado',
+                deleteDrug: 'Medicamento deletado',
                 createAnimalName: 'O campo nome precisa ser preenchido',
                 createAnimalSpecie: 'O campo tipo precisa ser preenchido',
                 createAnimalAge: 'O campo idade precisa ser preenchido',
@@ -114,6 +120,12 @@ export class Messages {
                 signIn: 'Sign In'
             },
             notifications:{
+                createAnimal: 'Created animal',
+                createDrug: 'Created drug',
+                editAnimal: 'Animal edited',
+                editDrug: 'Drug edited',
+                deleteAnimal: 'Deleted animal',
+                deleteDrug: 'Deleted drug',
                 createAnimalName: 'Name field must be filled in',
                 createAnimalSpecie: 'Type field must be filled in',
                 createAnimalAge: 'Age field needs to be filled',
@@ -178,6 +190,12 @@ export class Messages {
                 signIn: 'Sign In'
             },
             notifications:{
+                createAnimal: 'Animal creado',
+                createDrug: 'Medicamento creado',
+                editAnimal: 'Animal editado',
+                editDrug: 'Medicamento editado',
+                deleteAnimal: 'Animal deletado',
+                deleteDrug: 'Medicamento deletado',
                 createAnimalName: 'El campo de nombre se debe rellenar',
                 createAnimalSpecie: 'El campo tipo debe llenarse',
                 createAnimalAge: 'El campo edad debe llenarse',
