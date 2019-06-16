@@ -1,16 +1,16 @@
 package com.devteam.backend.gestvet.security.services;
 
 import com.devteam.backend.gestvet.model.Drug;
-import com.devteam.backend.gestvet.repository.MedicamentoRepository;
+import com.devteam.backend.gestvet.repository.DrugRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MedicamentoServiceImpl implements MedicamentoService {
+public class DrugServiceImpl implements DrugService {
     @Autowired
-    private MedicamentoRepository repository;
+    private DrugRepository repository;
 
     @Override
     public Drug create(Drug drug) {
@@ -37,8 +37,8 @@ public class MedicamentoServiceImpl implements MedicamentoService {
     }
 
     @Override
-    public Drug findByNome(String nome) {
-        return repository.findByNome(nome);
+    public Drug findByName(String name) {
+        return repository.findByName(name);
     }
 
     @Override

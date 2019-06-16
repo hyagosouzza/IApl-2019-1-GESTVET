@@ -5,7 +5,7 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-public interface MedicamentoRepository  extends Repository<Drug, Integer> {
+public interface DrugRepository extends Repository<Drug, Integer> {
 
     Drug save(Drug drug);
 
@@ -13,7 +13,7 @@ public interface MedicamentoRepository  extends Repository<Drug, Integer> {
 
     Drug findById(Long id);
 
-    Drug findByNome(String nome);
+    Drug findByName(String name);
 
     void delete(Drug drug);
 
