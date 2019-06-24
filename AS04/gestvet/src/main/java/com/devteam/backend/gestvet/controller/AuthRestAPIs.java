@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import com.devteam.backend.gestvet.message.request.LoginForm;
 import com.devteam.backend.gestvet.message.request.SignUpForm;
 import com.devteam.backend.gestvet.message.response.JwtResponse;
+import com.devteam.backend.gestvet.model.ApiError;
 import com.devteam.backend.gestvet.model.Role;
 import com.devteam.backend.gestvet.model.RoleName;
 import com.devteam.backend.gestvet.model.User;
@@ -16,6 +17,7 @@ import com.devteam.backend.gestvet.repository.UserRepository;
 import com.devteam.backend.gestvet.security.jwt.JwtProvider;
 import com.devteam.backend.gestvet.security.services.UserPrinciple;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +26,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import static com.devteam.backend.gestvet.model.RoleName.ROLE_ADMIN;
 
@@ -110,5 +113,13 @@ public class AuthRestAPIs {
         userRepository.save(user);
 
         return ResponseEntity.ok().body("User registered successfully!");
+    }
+
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<Object> handleGeneric(Exception ex, WebRequest request) {
+        String error = "Erro inesperado no servidor.";
+
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 }
