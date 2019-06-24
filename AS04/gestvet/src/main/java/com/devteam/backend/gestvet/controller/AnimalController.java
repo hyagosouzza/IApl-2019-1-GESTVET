@@ -59,4 +59,12 @@ public class AnimalController {
         return new ResponseEntity<Object>(
                 apiError, new HttpHeaders(), apiError.getStatus());
     }
+
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<Object> handleGeneric(Exception ex, WebRequest request) {
+        String error = "Erro inesperado no servidor.";
+
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
+        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+    }
 }

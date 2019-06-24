@@ -5,7 +5,7 @@ import { TokenStorage } from './token.storage';
 @Injectable()
 export class AuthService {
 
-  baseUrl: string = 'http://localhost:8080/api/auth';
+  baseUrl: string = 'http://localhost:8080/gestvet/auth';
 
   constructor(private http: HttpClient, private token: TokenStorage) {
   }
