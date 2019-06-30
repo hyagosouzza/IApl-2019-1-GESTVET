@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Drug } from '../../../models/drug.model';
-import { DrugService } from '../../../services/drugs/drug.service';
-import { Messages } from '../../../messages/messages';
-import { WindowRef } from '../../../WindowRef';
-import { NotifyService } from '../../../services/notify/notify.service';
+import {Component, OnInit} from '@angular/core';
+import {Drug} from '../../../models/drug.model';
+import {DrugService} from '../../../services/drugs/drug.service';
+import {Messages} from '../../../messages/messages';
+import {WindowRef} from '../../../WindowRef';
+import {NotifyService} from '../../../services/notify/notify.service';
 
 declare let $: any;
 
@@ -20,7 +20,8 @@ export class DrugComponent implements OnInit {
   findOneById: any;
   labels: any;
 
-  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService) { }
+  constructor(private drugService: DrugService, private messages: Messages, private winRef: WindowRef, private notifyService: NotifyService) {
+  }
 
   ngOnInit() {
     this.initData();
@@ -42,21 +43,21 @@ export class DrugComponent implements OnInit {
   }
 
   checkFields() {
-    
-    if(this.drug.name == null || '') {
-      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugName, "orange");
+
+    if (this.drug.name == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.createDrugName, 'orange');
       return false;
     }
-    if(this.drug.price == null || '') {
-      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugPrice, "orange");
+    if (this.drug.price == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.createDrugPrice, 'orange');
       return false;
     }
-    if(this.drug.dosage == null || '') {
-      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugDosage, "orange");
+    if (this.drug.dosage == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.createDrugDosage, 'orange');
       return false;
     }
-    if(this.drug.quantity == null || '') {
-      this.notifyService.createNotify("Aviso", this.labels.notifications.createDrugQuantity, "orange");
+    if (this.drug.quantity == null || '') {
+      this.notifyService.createNotify('Aviso', this.labels.notifications.createDrugQuantity, 'orange');
       return false;
     }
     this.drug.quantity = Number.parseInt(this.drug.quantity.toString());
@@ -69,41 +70,49 @@ export class DrugComponent implements OnInit {
       return;
     }
 
-    this.drugService.createDrug(this.drug)
-      .subscribe(data => {
-        this.notifyService.createNotify("Sucesso", this.labels.notifications.createDrug, "green");
+    this.drugService.createDrug(this.drug).toPromise().then(
+      retorno => {
+        this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.createDrug, 'green');
         this.initData();
         $('.modal').modal('hide');
-      });
+      }
+    ).catch(erro => {
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.createDrugError, 'red');
+      this.initData();
+      $('.modal').modal('hide');
+    });
 
   }
 
   putDrug(): void {
-    this.drugService.putDrug(this.updateDrug).subscribe(
-      data => {
-        this.notifyService.createNotify("Sucesso", this.labels.notifications.editDrug, "green");
-        this.initData();
-        $('.modal').modal('hide');
-      }
-    );
+    this.drugService.putDrug(this.updateDrug).toPromise().then(retorno => {
+      this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.editDrug, 'green');
+      this.initData();
+      $('.modal').modal('hide');
+    }).catch(erro => {
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.editDrugError, 'red');
+      this.initData();
+      $('.modal').modal('hide');
+    });
   }
 
   deleteDrug(drug: Drug): void {
-    this.drugService.deleteDrug(drug).subscribe(
-      data => {
-        this.drugs = this.drugs.filter(u => u !== drug);
-        this.notifyService.createNotify("Sucesso", this.labels.notifications.deleteDrug, "green");
-      }
-    );
+    this.drugService.deleteDrug(drug).toPromise().then(retorno => {
+      this.drugs = this.drugs.filter(u => u !== drug);
+      this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.deleteDrug, 'green');
+    }).catch(erro => {
+      this.drugs = this.drugs.filter(u => u !== drug);
+      this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.deleteDrugError, 'red');
+    });
   }
 
   selectLanguage() {
-    var country = this.winRef.nativeWindow.navigator.language.substring(3,5)
-    if (country === 'BR'){
+    var country = this.winRef.nativeWindow.navigator.language.substring(3, 5);
+    if (country === 'BR') {
       this.labels = this.messages.messages.pt;
-    } else if (country === 'US'){
+    } else if (country === 'US') {
       this.labels = this.messages.messages.en;
-    } else if (country === 'ES'){
+    } else if (country === 'ES') {
       this.labels = this.messages.messages.es;
     }
   }

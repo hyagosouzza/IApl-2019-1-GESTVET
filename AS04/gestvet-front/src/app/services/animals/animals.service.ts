@@ -13,7 +13,7 @@ export class AnimalsService {
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + this.token.getToken()
-  })
+  });
 
   constructor(private http: HttpClient, private token: TokenStorage, private notifyService: NotifyService) {
   }
@@ -23,7 +23,7 @@ export class AnimalsService {
   }
 
   public createAnimal(animal) {
-    return this.http.post<Animal>(this.baseAnimalUrl, animal, { headers: this.headers });
+    return this.http.post(this.baseAnimalUrl, animal, { headers: this.headers });
   }
 
   public findOne(animal) {
