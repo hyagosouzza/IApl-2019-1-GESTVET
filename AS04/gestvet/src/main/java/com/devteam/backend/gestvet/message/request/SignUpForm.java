@@ -20,19 +20,19 @@ public class SignUpForm {
     @Email
     private String email;
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    private Set<Role> roles;
+    private Set<String> roles;
     
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
 
     public String getName() {
         return name;
