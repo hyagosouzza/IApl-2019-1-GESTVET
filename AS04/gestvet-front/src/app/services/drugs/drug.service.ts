@@ -6,7 +6,8 @@ import { TokenStorage } from '../token.storage';
 @Injectable()
 export class DrugService {
 
-  baseUrl = 'http://localhost:8080/gestvet/drugs/';
+  baseDrugsUrl = 'http://localhost:8080/gestvet/drugs/';
+  baseDrugUrl = 'http://localhost:8080/gestvet/drug/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -17,23 +18,23 @@ export class DrugService {
   }
 
   public getDrugs() {
-    return this.http.get<Drug[]>(this.baseUrl, { headers: this.headers } );
+    return this.http.get<Drug[]>(this.baseDrugsUrl, { headers: this.headers } );
   }
 
   public createDrug(drug) {
-    return this.http.post<Drug>(this.baseUrl, drug, { headers: this.headers });
+    return this.http.post<Drug>(this.baseDrugUrl, drug, { headers: this.headers });
   }
 
   public findOne(drug) {
-    return this.http.get<Drug>(this.baseUrl + drug.id, { headers: this.headers });
+    return this.http.get<Drug>(this.baseDrugUrl + drug.id, { headers: this.headers });
   }
 
   public putDrug(drug) {
-    return this.http.put(this.baseUrl + drug.id, drug, { headers: this.headers });
+    return this.http.put(this.baseDrugUrl + drug.id, drug, { headers: this.headers });
   }
 
   public deleteDrug(drug) {
-    return this.http.delete(this.baseUrl + drug.id, { headers: this.headers });
+    return this.http.delete(this.baseDrugUrl + drug.id, { headers: this.headers });
   }
 
 }

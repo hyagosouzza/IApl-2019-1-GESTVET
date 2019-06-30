@@ -91,12 +91,12 @@ public class AuthRestAPIs {
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
                 signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
 
-        Set<Role> strRoles = signUpRequest.getRoles();
+        Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
         strRoles.forEach(role -> {
-        	switch(role.getName()) {
-                case ROLE_ADMIN:
+        	switch(role) {
+                case "ROLE_ADMIN":
 	    			Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
 	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Admin Role not find."));
 	    			roles.add(adminRole);

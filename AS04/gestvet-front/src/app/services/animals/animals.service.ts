@@ -7,7 +7,8 @@ import {NotifyService} from '../notify/notify.service';
 @Injectable()
 export class AnimalsService {
 
-  baseUrl = 'http://localhost:8080/gestvet/animals/';
+  baseAnimalsUrl = 'http://localhost:8080/gestvet/animals/';
+  baseAnimalUrl = 'http://localhost:8080/gestvet/animal/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -18,27 +19,23 @@ export class AnimalsService {
   }
 
   public getAnimals() {
-    return this.http.get<Animal[]>(this.baseUrl, { headers: this.headers });
+    return this.http.get<Animal[]>(this.baseAnimalsUrl, { headers: this.headers });
   }
 
   public createAnimal(animal) {
-    try {
-      return this.http.post<Animal>(this.baseUrl, animal, { headers: this.headers });
-    } catch (e) {
-      return e;
-    }
+    return this.http.post<Animal>(this.baseAnimalUrl, animal, { headers: this.headers });
   }
 
   public findOne(animal) {
-    return this.http.get<Animal>(this.baseUrl + animal.id, { headers: this.headers });
+    return this.http.get<Animal>(this.baseAnimalUrl + animal.id, { headers: this.headers });
   }
 
   public putAnimal(animal) {
-    return this.http.put(this.baseUrl + animal.id, animal, { headers: this.headers });
+    return this.http.put(this.baseAnimalUrl + animal.id, animal, { headers: this.headers });
   }
 
   public deleteAnimal(animal) {
-    return this.http.delete(this.baseUrl + animal.id, { headers: this.headers });
+    return this.http.delete(this.baseAnimalUrl + animal.id, { headers: this.headers });
   }
 
 }

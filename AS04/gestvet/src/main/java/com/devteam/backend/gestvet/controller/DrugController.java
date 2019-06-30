@@ -14,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping({"/gestvet/drugs"})
+@RequestMapping({"/gestvet/drug"})
 public class DrugController {
     @Autowired
     private DrugService drugService;
@@ -38,18 +38,5 @@ public class DrugController {
     @DeleteMapping(path = {"/{id}"})
     public Drug delete(@PathVariable("id") Long id){
         return drugService.delete(id);
-    }
-
-    @GetMapping
-    public List<Drug> findAll(){
-        return drugService.findAll();
-    }
-
-    @ExceptionHandler({Exception.class})
-    public ResponseEntity<Object> handleGeneric(Exception ex, WebRequest request) {
-        String error = "Erro inesperado no servidor.";
-
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 }
