@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping({"/gestvet/drugs"})
+@RequestMapping({"/gestvet/drug"})
 public class DrugController {
     @Autowired
     private DrugService drugService;
@@ -35,8 +35,4 @@ public class DrugController {
         return drugService.delete(id);
     }
 
-    @GetMapping
-    public List<Drug> findAll(){
-        return drugService.findAll();
-    }
 }

@@ -17,30 +17,14 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping({"/gestvet/animal"})
-public class AnimalController {
+@RequestMapping({"/gestvet/animals"})
+public class AnimalsController {
     @Autowired
     private AnimalService animalService;
 
-    @PostMapping
-    public Animal create(@RequestBody Animal animal) {
-        return animalService.create(animal);
-    }
-
-    @PutMapping(path = {"/{id}"})
-    public Animal upgrade(@PathVariable("id") Long id, @RequestBody Animal animal) {
-        animal.setId(id);
-        return animalService.upgrade(animal);
-    }
-
-    @GetMapping(path = {"/{id}"})
-    public Animal findById(@PathVariable("id") Long id) {
-        return animalService.findById(id);
-    }
-
-    @DeleteMapping(path = {"/{id}"})
-    public Animal delete(@PathVariable("id") Long id) {
-        return animalService.delete(id);
+    @GetMapping
+    public List<Animal> findAll() {
+        return animalService.findAll();
     }
 
     @ExceptionHandler({TypeMismatchException.class})
