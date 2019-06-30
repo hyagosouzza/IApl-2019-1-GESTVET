@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Animal } from '../../models/animal.model';
 import { TokenStorage } from '../token.storage';
+import {NotifyService} from '../notify/notify.service';
 
 @Injectable()
 export class AnimalsService {
@@ -13,7 +14,7 @@ export class AnimalsService {
     'Authorization': 'Bearer ' + this.token.getToken()
   })
 
-  constructor(private http: HttpClient, private token: TokenStorage) {
+  constructor(private http: HttpClient, private token: TokenStorage, private notifyService: NotifyService) {
   }
 
   public getAnimals() {
@@ -21,7 +22,11 @@ export class AnimalsService {
   }
 
   public createAnimal(animal) {
-    return this.http.post<Animal>(this.baseUrl, animal, { headers: this.headers });
+    try {
+      return this.http.post<Animal>(this.baseUrl, animal, { headers: this.headers });
+    } catch (e) {
+      return e;
+    }
   }
 
   public findOne(animal) {
