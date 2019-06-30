@@ -7,7 +7,7 @@ import { TokenStorage } from '../token.storage';
 export class DrugService {
 
   baseDrugsUrl = 'http://localhost:8080/gestvet/drugs/';
-  baseDrugUrl = 'http://localhost:8080/gestvet/drugs/';
+  baseDrugUrl = 'http://localhost:8080/gestvet/drug/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
