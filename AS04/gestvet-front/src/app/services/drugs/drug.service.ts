@@ -6,8 +6,8 @@ import { TokenStorage } from '../token.storage';
 @Injectable()
 export class DrugService {
 
-  baseDrugsUrl = 'http://localhost:8080/gestvet/drugs/';
-  baseDrugUrl = 'http://localhost:8080/gestvet/drug/';
+  baseDrugsUrl = 'http://gestvet.appspot.com/gestvet/drugs/';
+  baseDrugUrl = 'http://gestvet.appspot.com/gestvet/drug/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',

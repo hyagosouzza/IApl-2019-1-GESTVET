@@ -7,8 +7,8 @@ import {NotifyService} from '../notify/notify.service';
 @Injectable()
 export class AnimalsService {
 
-  baseAnimalsUrl = 'http://localhost:8080/gestvet/animals/';
-  baseAnimalUrl = 'http://localhost:8080/gestvet/animal/';
+  baseAnimalsUrl = 'http://gestvet.appspot.com/gestvet/animals/';
+  baseAnimalUrl = 'http://gestvet.appspot.com/gestvet/animal/';
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
