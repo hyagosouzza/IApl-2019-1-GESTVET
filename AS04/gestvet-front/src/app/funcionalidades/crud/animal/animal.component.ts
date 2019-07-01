@@ -103,13 +103,13 @@ export class AnimalComponent implements OnInit {
     this.animalService.createAnimal(this.animal).toPromise().then(
       retorno => {
         this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.createAnimal, 'green');
-        (document.getElementById('formAnimal') as HTMLFormElement).reset();
+        (document.getElementById('createAnimal') as HTMLFormElement).reset();
         this.initData();
         $('.modal').modal('hide');
       }
     ).catch(erro => {
       this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.createAnimalError, 'red');
-      (document.getElementById('formAnimal') as HTMLFormElement).reset();
+      (document.getElementById('createAnimal') as HTMLFormElement).reset();
       this.initData();
       $('.modal').modal('hide');
     });

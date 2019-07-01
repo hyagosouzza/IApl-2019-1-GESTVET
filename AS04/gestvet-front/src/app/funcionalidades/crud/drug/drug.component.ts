@@ -73,15 +73,16 @@ export class DrugComponent implements OnInit {
     this.drugService.createDrug(this.drug).toPromise().then(
       retorno => {
         this.notifyService.createNotify(this.labels.notifications.success, this.labels.notifications.createDrug, 'green');
+        (document.getElementById('createDrug') as HTMLFormElement).reset();
         this.initData();
         $('.modal').modal('hide');
       }
     ).catch(erro => {
       this.notifyService.createNotify(this.labels.notifications.warning, this.labels.notifications.createDrugError, 'red');
+      (document.getElementById('createDrug') as HTMLFormElement).reset();
       this.initData();
       $('.modal').modal('hide');
     });
-
   }
 
   putDrug(): void {
